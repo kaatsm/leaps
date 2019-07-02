@@ -1,0 +1,2969 @@
+cap log c
+clear
+clear matrix
+set more off
+
+
+/************************************************************
+
+				            MERGE
+							
+************************************************************/
+
+/* -----------------------------------------------------------
+
+							WAVE 7
+							
+----------------------------------------------------------- */
+
+
+	/* -----------------------------------------------------------
+		CV_R (Cover screen)
+	----------------------------------------------------------- */
+		
+		use "/Users/micahkaats/Desktop/EHERO/Refugees/DATA/SHARE/sharew7_rel7-0-0_ALL_datasets_stata/sharew7_rel7-0-0_cv_r.dta", clear
+		
+		gen wave=7
+		label var wave "SHARE wave"
+		
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE7.dta", replace
+
+	/* -----------------------------------------------------------
+		IMPUTATIONS
+	----------------------------------------------------------- */
+		
+		use "/Users/micahkaats/Desktop/EHERO/Refugees/DATA/SHARE/sharew7_rel7-0-0_ALL_datasets_stata/sharew7_rel7-0-0_gv_imputations.dta"
+		
+		keep if implicat==1
+		merge 1:1 mergeid using "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE7.dta"
+		replace _merge=3 if deceased==1
+		keep if _merge==3
+		drop _merge	
+		
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE7.dta", replace
+		
+	/* -----------------------------------------------------------
+		HOUSING 
+	----------------------------------------------------------- */
+		
+		use "/Users/micahkaats/Desktop/EHERO/Refugees/DATA/SHARE/sharew7_rel7-0-0_ALL_datasets_stata/sharew7_rel7-0-0_gv_housing.dta"
+		
+		merge 1:1 mergeid using "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE7.dta"
+		replace _merge=3 if deceased==1
+		keep if _merge==3
+		drop _merge	
+
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE7.dta", replace
+		
+	/* -----------------------------------------------------------
+		MH (Mental health)
+	----------------------------------------------------------- */
+		
+		use "/Users/micahkaats/Desktop/EHERO/Refugees/DATA/SHARE/sharew7_rel7-0-0_ALL_datasets_stata/sharew7_rel7-0-0_mh.dta", clear
+
+		merge 1:1 mergeid using "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE7.dta"
+		replace _merge=3 if deceased==1
+		keep if _merge==3
+		drop _merge	
+
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE7.dta", replace
+		
+	/* -----------------------------------------------------------
+		PH (Physical health)
+	----------------------------------------------------------- */
+		
+		use "/Users/micahkaats/Desktop/EHERO/Refugees/DATA/SHARE/sharew7_rel7-0-0_ALL_datasets_stata/sharew7_rel7-0-0_ph.dta", clear
+		
+		merge 1:1 mergeid using "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE7.dta"
+		replace _merge=3 if deceased==1
+		keep if _merge==3
+		drop _merge	
+
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE7.dta", replace
+		
+		
+/* -----------------------------------------------------------
+
+							WAVE 6
+							
+----------------------------------------------------------- */
+
+
+	/* -----------------------------------------------------------
+		CV_R (Cover screen)
+	----------------------------------------------------------- */
+		
+		use "/Users/micahkaats/Desktop/EHERO/Refugees/DATA/SHARE/sharew6_rel7-0-0_ALL_datasets_stata/sharew6_rel7-0-0_cv_r.dta", clear
+		
+		gen wave=6
+		
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE6.dta", replace
+
+	/* -----------------------------------------------------------
+		IMPUTATIONS
+	----------------------------------------------------------- */
+		
+		use "/Users/micahkaats/Desktop/EHERO/Refugees/DATA/SHARE/sharew6_rel7-0-0_ALL_datasets_stata/sharew6_rel7-0-0_gv_imputations.dta"
+		
+		keep if implicat==1
+		merge 1:1 mergeid using "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE6.dta"
+		replace _merge=3 if deceased==1
+		keep if _merge==3
+		drop _merge	
+		
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE6.dta", replace
+		
+	/* -----------------------------------------------------------
+		HOUSING 
+	----------------------------------------------------------- */
+		
+		use "/Users/micahkaats/Desktop/EHERO/Refugees/DATA/SHARE/sharew6_rel7-0-0_ALL_datasets_stata/sharew6_rel7-0-0_gv_housing.dta"
+		
+		merge 1:1 mergeid using "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE6.dta"
+		replace _merge=3 if deceased==1
+		keep if _merge==3
+		drop _merge	
+
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE6.dta", replace
+		
+	/* -----------------------------------------------------------
+		MH (Mental health)
+	----------------------------------------------------------- */
+		
+		use "/Users/micahkaats/Desktop/EHERO/Refugees/DATA/SHARE/sharew6_rel7-0-0_ALL_datasets_stata/sharew6_rel7-0-0_mh.dta", clear
+
+		merge 1:1 mergeid using "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE6.dta"
+		replace _merge=3 if deceased==1
+		keep if _merge==3
+		drop _merge	
+
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE6.dta", replace
+		
+	/* -----------------------------------------------------------
+		PH (Physical health)
+	----------------------------------------------------------- */
+		
+		use "/Users/micahkaats/Desktop/EHERO/Refugees/DATA/SHARE/sharew6_rel7-0-0_ALL_datasets_stata/sharew6_rel7-0-0_ph.dta", clear
+		
+		merge 1:1 mergeid using "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE6.dta"
+		replace _merge=3 if deceased==1
+		keep if _merge==3
+		drop _merge	
+
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE6.dta", replace
+		
+		
+	/* -----------------------------------------------------------
+		SN (Social networks)
+	----------------------------------------------------------- */
+		
+		use "/Users/micahkaats/Desktop/EHERO/Refugees/DATA/SHARE/sharew6_rel7-0-0_ALL_datasets_stata/sharew6_rel7-0-0_sn.dta", clear
+		
+		merge 1:1 mergeid using "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE6.dta"
+		replace _merge=3 if deceased==1
+		keep if _merge==3
+		drop _merge	
+
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE6.dta", replace
+
+		
+/* -----------------------------------------------------------
+
+							WAVE 5
+							
+----------------------------------------------------------- */
+
+
+	/* -----------------------------------------------------------
+		CV_R (Cover screen)
+	----------------------------------------------------------- */
+		
+		use "/Users/micahkaats/Desktop/EHERO/Refugees/DATA/SHARE/sharew5_rel7-0-0_ALL_datasets_stata/sharew5_rel7-0-0_cv_r.dta", clear
+		
+		gen wave=5
+		
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE5.dta", replace
+
+	/* -----------------------------------------------------------
+		IMPUTATIONS
+	----------------------------------------------------------- */
+		
+		use "/Users/micahkaats/Desktop/EHERO/Refugees/DATA/SHARE/sharew5_rel7-0-0_ALL_datasets_stata/sharew5_rel7-0-0_gv_imputations.dta"
+		
+		keep if implicat==1
+		merge 1:1 mergeid using "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE5.dta"
+		replace _merge=3 if deceased==1
+		keep if _merge==3
+		drop _merge	
+		
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE5.dta", replace
+		
+	/* -----------------------------------------------------------
+		HOUSING 
+	----------------------------------------------------------- */
+		
+		use "/Users/micahkaats/Desktop/EHERO/Refugees/DATA/SHARE/sharew5_rel7-0-0_ALL_datasets_stata/sharew5_rel7-0-0_gv_housing.dta"
+		
+		merge 1:1 mergeid using "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE5.dta"
+		replace _merge=3 if deceased==1
+		keep if _merge==3
+		drop _merge	
+
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE5.dta", replace
+		
+	/* -----------------------------------------------------------
+		MH (Mental health)
+	----------------------------------------------------------- */
+		
+		use "/Users/micahkaats/Desktop/EHERO/Refugees/DATA/SHARE/sharew5_rel7-0-0_ALL_datasets_stata/sharew5_rel7-0-0_mh.dta", clear
+
+		merge 1:1 mergeid using "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE5.dta"
+		replace _merge=3 if deceased==1
+		keep if _merge==3
+		drop _merge	
+
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE5.dta", replace
+		
+	/* -----------------------------------------------------------
+		PH (Physical health)
+	----------------------------------------------------------- */
+		
+		use "/Users/micahkaats/Desktop/EHERO/Refugees/DATA/SHARE/sharew5_rel7-0-0_ALL_datasets_stata/sharew5_rel7-0-0_ph.dta", clear
+		
+		merge 1:1 mergeid using "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE5.dta"
+		replace _merge=3 if deceased==1
+		keep if _merge==3
+		drop _merge	
+
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE5.dta", replace
+		
+		
+/* -----------------------------------------------------------
+
+							WAVE 4
+							
+----------------------------------------------------------- */
+
+
+	/* -----------------------------------------------------------
+		CV_R (Cover screen)
+	----------------------------------------------------------- */
+		
+		use "/Users/micahkaats/Desktop/EHERO/Refugees/DATA/SHARE/sharew4_rel7-0-0_ALL_datasets_stata/sharew4_rel7-0-0_cv_r.dta", clear
+		
+		gen wave=4
+		
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE4.dta", replace
+
+	/* -----------------------------------------------------------
+		IMPUTATIONS
+	----------------------------------------------------------- */
+		
+		use "/Users/micahkaats/Desktop/EHERO/Refugees/DATA/SHARE/sharew4_rel7-0-0_ALL_datasets_stata/sharew4_rel7-0-0_gv_imputations.dta"
+		
+		keep if implicat==1
+		merge 1:1 mergeid using "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE4.dta"
+		replace _merge=3 if deceased==1
+		keep if _merge==3
+		drop _merge	
+		
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE4.dta", replace
+		
+	/* -----------------------------------------------------------
+		HOUSING 
+	----------------------------------------------------------- */
+		
+		use "/Users/micahkaats/Desktop/EHERO/Refugees/DATA/SHARE/sharew4_rel7-0-0_ALL_datasets_stata/sharew4_rel7-0-0_gv_housing.dta"
+		
+		merge 1:1 mergeid using "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE4.dta"
+		replace _merge=3 if deceased==1
+		keep if _merge==3
+		drop _merge	
+
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE4.dta", replace
+		
+	/* -----------------------------------------------------------
+		MH (Mental health)
+	----------------------------------------------------------- */
+		
+		use "/Users/micahkaats/Desktop/EHERO/Refugees/DATA/SHARE/sharew4_rel7-0-0_ALL_datasets_stata/sharew4_rel7-0-0_mh.dta", clear
+
+		merge 1:1 mergeid using "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE4.dta"
+		replace _merge=3 if deceased==1
+		keep if _merge==3
+		drop _merge	
+
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE4.dta", replace
+		
+	/* -----------------------------------------------------------
+		PH (Physical health)
+	----------------------------------------------------------- */
+		
+		use "/Users/micahkaats/Desktop/EHERO/Refugees/DATA/SHARE/sharew4_rel7-0-0_ALL_datasets_stata/sharew4_rel7-0-0_ph.dta", clear
+		
+		merge 1:1 mergeid using "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE4.dta"
+		replace _merge=3 if deceased==1
+		keep if _merge==3
+		drop _merge	
+
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE4.dta", replace
+
+	/* -----------------------------------------------------------
+		SN (Social networks)
+	----------------------------------------------------------- */
+		
+		use "/Users/micahkaats/Desktop/EHERO/Refugees/DATA/SHARE/sharew4_rel7-0-0_ALL_datasets_stata/sharew4_rel7-0-0_sn.dta", clear 
+		
+		merge 1:1 mergeid using "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE4.dta"
+		replace _merge=3 if deceased==1
+		keep if _merge==3
+		drop _merge	
+
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE4.dta", replace
+			
+	
+/* -----------------------------------------------------------
+
+							WAVE 3
+							
+----------------------------------------------------------- */
+
+	/* -----------------------------------------------------------
+		CV_R (Cover screen)
+	----------------------------------------------------------- */
+		
+		use "/Users/micahkaats/Desktop/EHERO/Refugees/DATA/SHARE/sharew3_rel7-0-0_ALL_datasets_stata/sharew3_rel7-0-0_cv_r.dta"
+		
+		gen wave=3
+		
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE3.dta", replace
+		
+/* -----------------------------------------------------------
+
+							WAVE 2
+							
+----------------------------------------------------------- */
+
+
+	/* -----------------------------------------------------------
+		CV_R (Cover screen)
+	----------------------------------------------------------- */
+		
+		use "/Users/micahkaats/Desktop/EHERO/Refugees/DATA/SHARE/sharew2_rel7-0-0_ALL_datasets_stata/sharew2_rel7-0-0_cv_r.dta", clear
+		
+		gen wave=2
+		
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE2.dta", replace
+
+	/* -----------------------------------------------------------
+		IMPUTATIONS
+	----------------------------------------------------------- */
+		
+		use "/Users/micahkaats/Desktop/EHERO/Refugees/DATA/SHARE/sharew2_rel7-0-0_ALL_datasets_stata/sharew2_rel7-0-0_gv_imputations.dta"
+		
+		keep if implicat==1
+		merge 1:1 mergeid using "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE2.dta"
+		replace _merge=3 if deceased==1
+		keep if _merge==3
+		drop _merge	
+		
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE2.dta", replace
+		
+	/* -----------------------------------------------------------
+		HOUSING 
+	----------------------------------------------------------- */
+		
+		use "/Users/micahkaats/Desktop/EHERO/Refugees/DATA/SHARE/sharew2_rel7-0-0_ALL_datasets_stata/sharew2_rel7-0-0_gv_housing.dta"
+		
+		merge 1:1 mergeid using "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE2.dta"
+		replace _merge=3 if deceased==1
+		keep if _merge==3
+		drop _merge	
+
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE2.dta", replace
+		
+	/* -----------------------------------------------------------
+		MH (Mental health)
+	----------------------------------------------------------- */
+		
+		use "/Users/micahkaats/Desktop/EHERO/Refugees/DATA/SHARE/sharew2_rel7-0-0_ALL_datasets_stata/sharew2_rel7-0-0_mh.dta", clear
+
+		merge 1:1 mergeid using "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE2.dta"
+		replace _merge=3 if deceased==1
+		keep if _merge==3
+		drop _merge	
+
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE2.dta", replace
+		
+	/* -----------------------------------------------------------
+		PH (Physical health)
+	----------------------------------------------------------- */
+		
+		use "/Users/micahkaats/Desktop/EHERO/Refugees/DATA/SHARE/sharew2_rel7-0-0_ALL_datasets_stata/sharew2_rel7-0-0_ph.dta", clear
+		
+		merge 1:1 mergeid using "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE2.dta"
+		replace _merge=3 if deceased==1
+		keep if _merge==3
+		drop _merge	
+
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE2.dta", replace
+		
+
+/* -----------------------------------------------------------
+
+							WAVE 1
+							
+----------------------------------------------------------- */
+
+
+	/* -----------------------------------------------------------
+		CV_R (Cover screen)
+	----------------------------------------------------------- */
+		
+		use "/Users/micahkaats/Desktop/EHERO/Refugees/DATA/SHARE/sharew1_rel7-0-0_ALL_datasets_stata/sharew1_rel7-0-0_cv_r.dta", clear
+		
+		gen wave=1
+		
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE1.dta", replace
+
+	/* -----------------------------------------------------------
+		IMPUTATIONS
+	----------------------------------------------------------- */
+		
+		use "/Users/micahkaats/Desktop/EHERO/Refugees/DATA/SHARE/sharew1_rel7-0-0_ALL_datasets_stata/sharew1_rel7-0-0_gv_imputations.dta"
+		
+		keep if implicat==1
+		merge 1:1 mergeid using "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE1.dta"
+		keep if _merge==3
+		drop _merge	
+		
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE1.dta", replace
+		
+	/* -----------------------------------------------------------
+		HOUSING 
+	----------------------------------------------------------- */
+		
+		use "/Users/micahkaats/Desktop/EHERO/Refugees/DATA/SHARE/sharew1_rel7-0-0_ALL_datasets_stata/sharew1_rel7-0-0_gv_housing.dta"
+		
+		merge 1:1 mergeid using "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE1.dta"
+		keep if _merge==3
+		drop _merge	
+
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE1.dta", replace
+		
+	/* -----------------------------------------------------------
+		MH (Mental health)
+	----------------------------------------------------------- */
+		
+		use "/Users/micahkaats/Desktop/EHERO/Refugees/DATA/SHARE/sharew1_rel7-0-0_ALL_datasets_stata/sharew1_rel7-0-0_mh.dta", clear
+
+		merge 1:1 mergeid using "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE1.dta"
+		keep if _merge==3
+		drop _merge	
+
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE1.dta", replace
+		
+	/* -----------------------------------------------------------
+		PH (Physical health)
+	----------------------------------------------------------- */
+		
+		use "/Users/micahkaats/Desktop/EHERO/Refugees/DATA/SHARE/sharew1_rel7-0-0_ALL_datasets_stata/sharew1_rel7-0-0_ph.dta", clear
+		
+		merge 1:1 mergeid using "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE1.dta"
+		keep if _merge==3
+		drop _merge	
+
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE1.dta", replace
+		
+
+
+		
+/************************************************************
+
+               APPEND WAVES 1, 2, 3, 4, 5, 6, 7
+
+************************************************************/
+
+set more off
+use "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE1.dta", clear
+
+append using "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE2.dta" 
+append using "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE3.dta" 
+append using "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE4.dta" 
+append using "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE5.dta" 
+append using "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE6.dta" 
+append using "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVE7.dta" 
+
+keep mergeid firstwave firstwave_hh hhsize hhid1 hhid2 hhid3 hhid4 hhid5 hhid6 hhid7 coupleid1 coupleid2 coupleid3 coupleid4 coupleid5 coupleid6 coupleid7 fam_resp hou_resp couple single partner country age age_p gender int_year int_month wave language deceased areabldgi ydip yind ypen1 ypen2 ypen3 ypen4 ypen5 ypen6 thinc2 thinc hnetw yedu yedu_p isced mstat nchild ngrchild gali chronic eyesightr hearing bmi weight height phinact eurod cjs lifesat lifehap lifex politics mh002_ mh003_ mh004_ mh005_ mh006_ mh007_ mh008_ mh009_ mh010_ mh011_ mh012_ mh013_ mh014_ mh015_ mh016_ mh017_ mh018_ mh019_ mh020_ mh021_ mh022_ mh023_ mh024_ mh025_ mh026_ mh027_ mh030_ mh031_ mh032_ mh034_ mh035_ mh036_ mh037_ mh001_ ph003_ ph004_ ph005_ ph006d1 ph006d2 ph006d3 ph006d4 ph006d5 ph006d6 ph006d7 ph006d8 ph006d9 ph006d10 ph006d11 ph006d12 ph006d13 ph006d14 ph006d15 ph006d16 ph006d17 ph006dno ph006dot ph008d1 ph008d2 ph008d3 ph008d4 ph008d5 ph008d6 ph008d7 ph008d8 ph008d9 ph008d10 ph008d11 ph008d12 ph008d13 ph008d14 ph008d15 ph008d16 ph008d17 ph008d18 ph008d19 ph008d20 ph008d21 ph008d22 ph008dot ph009_1 ph009_2 ph009_3 ph009_4 ph009_5 ph009_6 ph009_7 ph009_8 ph009_9 ph009_10 ph009_11 ph009_12 ph009_13 ph009_14 ph009_15 ph009_16 ph009_17 ph010d1 ph010d2 ph010d3 ph010d4 ph010d5 ph010d6 ph010d7 ph010d8 ph010d9 ph010d10 ph010d11 ph010d12 ph010dno ph010dot ph011d1 ph011d2 ph011d3 ph011d4 ph011d5 ph011d6 ph011d7 ph011d8 ph011d9 ph011d10 ph011d11 ph011d12 ph011d13 ph011d14 ph011dno ph011dot ph012_ ph013_ ph041_ ph043_ ph044_ ph045_ ph046_ ph048d1 ph048d2 ph048d3 ph048d4 ph048d5 ph048d6 ph048d7 ph048d8 ph048d9 ph048d10 ph048dno ph049d1 ph049d2 ph049d3 ph049d4 ph049d5 ph049d6 ph049d7 ph049d8 ph049d9 ph049d10 ph049d11 ph049d12 ph049d13 ph049dno ph059d1 ph059d2 ph059d3 ph059d4 ph059d5 ph059d6 ph059d7 ph059dno ph062_ ph063_ ph064_ ph067_1 ph067_2 ph067_3 ph067_4 ph068_1 ph068_2 ph068_3 ph068_4 ph069_1 ph069_2 ph069_3 ph069_4 ph071_1 ph071_2 ph071_3 ph071_4 ph072_1 ph072_2 ph072_3 ph072_4 ph073_1 ph073_2 ph073_3 ph073_4 ph074_1 ph074_2 ph074_3 ph074_4 ph075_1 ph075_2 ph075_3 ph075_4 ph076_1 ph076_2 ph076_3 ph076_4 ph077_1 ph077_2 ph077_3 ph077_4 ph080d1 ph080d2 ph080d3 ph080d4 ph080d5 ph080d6 ph080d7 ph080d8 ph080d9 ph080d10 ph080d11 ph080d12 ph080d13 ph080d14 ph080d15 ph080d16 ph080d17 ph080d18 ph080d19 ph080d20 ph080d21 ph080d22 ph080dot ph006d18 ph006d19 ph006d20 ph009_18 ph009_19 ph009_20 ph009_other ph085_ ph087d1 ph087d2 ph087d3 ph087d4 ph087d5 ph087d6 ph087d7 ph088_ ph089d1 ph089d2 ph089d3 ph089d4 ph089dno ph059d8 ph059d9 ph059d10 ph059dot bfi10_extra bfi10_agree bfi10_consc bfi10_neuro bfi10_open sn002a_1 sn002a_2 sn002a_3 sn002a_4 sn002a_5 sn002a_6 sn002a_7
+order mergeid firstwave firstwave_hh hhid1 hhid2 hhid3 hhid4 hhid5 hhid6 hhid7 coupleid1 coupleid2 coupleid3 coupleid4 coupleid5 coupleid6 coupleid7 fam_resp hou_resp couple single partner country age age_p gender int_year int_month wave language deceased areabldgi ydip yind ypen1 ypen2 ypen3 ypen4 ypen5 ypen6 thinc2 thinc hnetw yedu yedu_p isced mstat nchild ngrchild gali chronic eyesightr hearing bmi weight height phinact eurod cjs lifesat lifehap lifex politics mh002_ mh003_ mh004_ mh005_ mh006_ mh007_ mh008_ mh009_ mh010_ mh011_ mh012_ mh013_ mh014_ mh015_ mh016_ mh017_ mh018_ mh019_ mh020_ mh021_ mh022_ mh023_ mh024_ mh025_ mh026_ mh027_ mh030_ mh031_ mh032_ mh034_ mh035_ mh036_ mh037_ mh001_ ph003_ ph004_ ph005_ ph006d1 ph006d2 ph006d3 ph006d4 ph006d5 ph006d6 ph006d7 ph006d8 ph006d9 ph006d10 ph006d11 ph006d12 ph006d13 ph006d14 ph006d15 ph006d16 ph006d17 ph006dno ph006dot ph008d1 ph008d2 ph008d3 ph008d4 ph008d5 ph008d6 ph008d7 ph008d8 ph008d9 ph008d10 ph008d11 ph008d12 ph008d13 ph008d14 ph008d15 ph008d16 ph008d17 ph008d18 ph008d19 ph008d20 ph008d21 ph008d22 ph008dot ph009_1 ph009_2 ph009_3 ph009_4 ph009_5 ph009_6 ph009_7 ph009_8 ph009_9 ph009_10 ph009_11 ph009_12 ph009_13 ph009_14 ph009_15 ph009_16 ph009_17 ph010d1 ph010d2 ph010d3 ph010d4 ph010d5 ph010d6 ph010d7 ph010d8 ph010d9 ph010d10 ph010d11 ph010d12 ph010dno ph010dot ph011d1 ph011d2 ph011d3 ph011d4 ph011d5 ph011d6 ph011d7 ph011d8 ph011d9 ph011d10 ph011d11 ph011d12 ph011d13 ph011d14 ph011dno ph011dot ph012_ ph013_ ph041_ ph043_ ph044_ ph045_ ph046_ ph048d1 ph048d2 ph048d3 ph048d4 ph048d5 ph048d6 ph048d7 ph048d8 ph048d9 ph048d10 ph048dno ph049d1 ph049d2 ph049d3 ph049d4 ph049d5 ph049d6 ph049d7 ph049d8 ph049d9 ph049d10 ph049d11 ph049d12 ph049d13 ph049dno ph059d1 ph059d2 ph059d3 ph059d4 ph059d5 ph059d6 ph059d7 ph059dno ph062_ ph063_ ph064_ ph067_1 ph067_2 ph067_3 ph067_4 ph068_1 ph068_2 ph068_3 ph068_4 ph069_1 ph069_2 ph069_3 ph069_4 ph071_1 ph071_2 ph071_3 ph071_4 ph072_1 ph072_2 ph072_3 ph072_4 ph073_1 ph073_2 ph073_3 ph073_4 ph074_1 ph074_2 ph074_3 ph074_4 ph075_1 ph075_2 ph075_3 ph075_4 ph076_1 ph076_2 ph076_3 ph076_4 ph077_1 ph077_2 ph077_3 ph077_4 ph080d1 ph080d2 ph080d3 ph080d4 ph080d5 ph080d6 ph080d7 ph080d8 ph080d9 ph080d10 ph080d11 ph080d12 ph080d13 ph080d14 ph080d15 ph080d16 ph080d17 ph080d18 ph080d19 ph080d20 ph080d21 ph080d22 ph080dot ph006d18 ph006d19 ph006d20 ph009_18 ph009_19 ph009_20 ph009_other ph085_ ph087d1 ph087d2 ph087d3 ph087d4 ph087d5 ph087d6 ph087d7 ph088_ ph089d1 ph089d2 ph089d3 ph089d4 ph089dno ph059d8 ph059d9 ph059d10 ph059dot bfi10_extra bfi10_agree bfi10_consc bfi10_neuro bfi10_open sn002a_1 sn002a_2 sn002a_3 sn002a_4 sn002a_5 sn002a_6 sn002a_7
+
+save "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVES1-2-3-4-5-6-7.dta", replace
+
+
+
+
+/************************************************************
+
+				       CLEAN VARIABLES
+							
+************************************************************/
+
+clear
+set more off
+use "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVES1-2-3-4-5-6-7.dta", clear
+
+* SET PANEL
+	egen mergeid2 = group(mergeid) 
+	rename int_year year
+	replace wave=. if wave<0
+	replace year=. if year<0
+	order mergeid2 wave 
+		label var wave "SHARE wave"
+	xtset mergeid2 wave
+
+* AGE
+	gen age2=age^2
+		label var age2 "age^2"
+	
+	gen agecat=40 if age==40 | age==41 | age==42 | age==43 | age==44 
+	replace agecat=45 if age==45 | age==46 | age==47 | age==48 | age==49
+	replace agecat=50 if age==50 | age==51 | age==52 | age==53 | age==54
+	replace agecat=55 if age==55 | age==56 | age==57 | age==58 | age==59	
+	replace agecat=60 if age==60 | age==61 | age==62 | age==63 | age==64 
+	replace agecat=65 if age==65 | age==66 | age==67 | age==68 | age==69	
+	replace agecat=70 if age==70 | age==71 | age==72 | age==73 | age==74 
+	replace agecat=75 if age==75 | age==76 | age==77 | age==78 | age==79	
+	replace agecat=80 if age==80 | age==81 | age==82 | age==83 | age==84 
+	replace agecat=85 if age==85 | age==86 | age==87 | age==88 | age==89	
+	replace agecat=90 if age==90 | age==91 | age==92 | age==93 | age==94 
+	replace agecat=95 if age==95 | age==96 | age==97 | age==98 | age==99 
+	
+	label var agecat "age categories"
+	
+* CHILDREN
+	replace nchild=0 if nchild<0
+	gen nchildren=nchild
+	replace nchildren=6 if nchildren>6 & nchildren!=.
+		label var nchildren "1, 2, 3, 4, 5, 6+ children"
+
+* EMPLOYMENT
+	replace cjs=. if cjs<0
+
+* EARNINGS
+	gen logincome=log(ydip)
+	replace logincome=0 if ydip==0
+		label var logincome "log earnings from employment"
+
+* HOUSEHOLD INCOME
+	gen loghincome1=log(thinc)
+	replace loghincome1=0 if thinc==0
+		label var loghincome1 "log total household income 1"
+		
+	gen loghincome2=log(thinc2)
+	replace loghincome2=0 if thinc2==0
+		label var loghincome2 "log total household income 2"
+	
+* HOUSEHOLD NET WORTH
+	gen logworth=log(hnetw)
+	replace logworth=0 if hnetw==0
+		label var logworth "log household net worth"
+		
+* RESIDENTIAL AREA
+	replace areabldgi=. if areabldgi<0
+
+* SICKNESS
+	* alzeimers
+		gen cause_id1=1 if ph006d16==1
+		label var cause_id1 "alzeimers"
+	* anxiety
+		gen cause_id2=1 if ph006d18==1
+		label var cause_id2 "anxiety"
+	* asthma
+		gen cause_id3=1 if ph006d7==1
+		label var cause_id3 "asthma"
+	* cataracts 
+		gen cause_id4=1 if ph006d13==1
+		label var cause_id4 "cataracts"
+	* depression
+		gen cause_id6=1 if eurod>3 & eurod!=.
+		label var cause_id6 "depression"
+	* osteoarthritis
+		gen cause_id7=1 if ph006d20==1
+		label var cause_id7 "osteoarthritis"
+	* parkinsons
+		gen cause_id8=1 if ph006d12==1
+		label var cause_id8 "parkinsons"
+	* rheumatoid arthritis
+		gen cause_id9=1 if ph006d19==1
+		label var cause_id9 "rheumatoid_arthritis"
+
+	* cancer bladder
+		gen cause_id10=1 if ph008d19==1
+		replace cause_id10=1 if ph080d19==1
+		label var cause_id10 "cancer_bladder"
+	* cancer brain
+		gen cause_id11=1 if ph008d1==1 
+		replace cause_id11=1 if ph080d1==1
+		label var cause_id11 "cancer_brain"
+	* cancer breast
+		gen cause_id12=1 if ph008d7==1 
+		replace cause_id12=1 if ph080d7==1
+		label var cause_id12 "cancer_breast"
+	* cancer cervix
+		gen cause_id13=1 if ph008d16==1 
+		replace cause_id13=1 if ph080d16==1				
+		label var cause_id13 "cancer_cervix"
+	* cancer colon
+		gen cause_id14=1 if ph008d18==1 
+		replace cause_id14=1 if ph080d18==1				
+		label var cause_id14 "cancer_colon"
+	* cancer throat
+		gen cause_id15=1 if ph008d8==1 
+		replace cause_id15=1 if ph080d8==1				
+		label var cause_id15 "cancer_throat"
+	* cancer kidney
+		gen cause_id16=1 if ph008d12==1 
+		replace cause_id16=1 if ph080d12==1				
+		label var cause_id16 "cancer_kidney"
+	* cancer larynx
+		gen cause_id17=1 if ph008d3==1 
+		replace cause_id17=1 if ph080d3==1				
+		label var cause_id17 "cancer_larynx"
+	* cancer ovarian
+		gen cause_id18=1 if ph008d15==1 
+		replace cause_id18=1 if ph080d15==1				
+		label var cause_id18 "cancer_ovarian"
+	* cancer pancreas
+		gen cause_id19=1 if ph008d11==1 
+		replace cause_id19=1 if ph080d11==1				
+		label var cause_id19 "cancer_pancreas"
+	* cancer prostate
+		gen cause_id20=1 if ph008d13==1 
+		replace cause_id20=1 if ph080d13==1				
+		label var cause_id20 "cancer_prostate"
+	* cancer stomach
+		gen cause_id21=1 if ph008d9==1 
+		replace cause_id21=1 if ph080d9==1				
+		label var cause_id21 "cancer_stomach"
+	* cancer testicles
+		gen cause_id22=1 if ph008d14==1 
+		replace cause_id22=1 if ph080d14==1				
+		label var cause_id22 "cancer_testicles"
+	* cancer thyroid
+		gen cause_id23=1 if ph008d5==1 
+		replace cause_id23=1 if ph080d5==1				
+		label var cause_id23 "cancer_thyroid"
+	* cancer lung
+		gen cause_id24=1 if ph008d6==1 
+		replace cause_id24=1 if ph080d6==1	
+		label var cause_id24 "cancer_lung"
+	
+	foreach v of var cause_id1 cause_id2 cause_id3 cause_id4 cause_id6 cause_id7 cause_id8 cause_id9 cause_id10 cause_id11 cause_id12 cause_id13 cause_id14 cause_id15 cause_id16 cause_id17 cause_id18 cause_id19 cause_id20 cause_id21 cause_id22 cause_id23 cause_id24 {
+		replace `v'=0 if `v'==. 
+		}
+
+* COMBORBIDITIES		
+	gen comorbid = cause_id1 + cause_id2+cause_id3+cause_id4+cause_id6+cause_id7+cause_id8+cause_id9+ cause_id10+ cause_id11 +cause_id12 +cause_id13 +cause_id14 +cause_id15 +cause_id16+ cause_id17 +cause_id18 +cause_id19 +cause_id20 +cause_id21 +cause_id22 +cause_id23 +cause_id24
+		label var comorbid "number of comorbidities"
+	gen comorbid2 = comorbid
+		replace comorbid2=6 if comorbid>6 & comorbid!=.
+		label var comorbid2 "number of comorbidities up to 6+"
+
+	foreach v of var cause_id1 cause_id2 cause_id3 cause_id4 cause_id6 cause_id7 cause_id8 cause_id9 cause_id10 cause_id11 cause_id12 cause_id13 cause_id14 cause_id15 cause_id16 cause_id17 cause_id18 cause_id19 cause_id20 cause_id21 cause_id22 cause_id23 cause_id24 {
+	   local x : variable label `v'
+	   rename `v' `x'
+	}		
+
+*** COUNTRY ***
+	gen location_id=75 if country==11
+	replace location_id=76 if country==23
+	replace location_id=45 if country==51
+	replace location_id=46 if country==47
+	replace location_id=77 if country==53
+	replace location_id=47 if country==28
+	replace location_id=78 if country==18
+	replace location_id=58 if country==35
+	replace location_id=79 if country==55
+	replace location_id=80 if country==17
+	replace location_id=81 if country==12
+	replace location_id=82 if country==19
+	replace location_id=48 if country==32
+	replace location_id=85 if country==25
+	replace location_id=86 if country==16
+	replace location_id=59 if country==57
+	replace location_id=60 if country==48
+	replace location_id=87 if country==31
+	replace location_id=88 if country==59
+	replace location_id=51 if country==29
+	replace location_id=91 if country==33
+	replace location_id=52 if country==61
+	replace location_id=54 if country==63
+	replace location_id=55 if country==34
+	replace location_id=92 if country==15
+	replace location_id=93 if country==13
+	replace location_id=94 if country==20
+	replace location_id=89 if country==14
+	replace location_id=84 if country==30
+
+*** GENDER ***
+	gen sex_id=1 if gender==1
+	replace sex_id=2 if gender==2
+	
+*** AGE ***
+	gen age_id=13 if age==40 | age==41 | age==42 | age==43 | age==44 
+	replace age_id=14 if age==45 | age==46 | age==47 | age==48 | age==49
+	replace age_id=15 if age==50 | age==51 | age==52 | age==53 | age==54
+	replace age_id=16 if age==55 | age==56 | age==57 | age==58 | age==59	
+	replace age_id=17 if age==60 | age==61 | age==62 | age==63 | age==64 
+	replace age_id=18 if age==65 | age==66 | age==67 | age==68 | age==69	
+	replace age_id=19 if age==70 | age==71 | age==72 | age==73 | age==74 
+	replace age_id=20 if age==75 | age==76 | age==77 | age==78 | age==79	
+	replace age_id=30 if age==80 | age==81 | age==82 | age==83 | age==84 
+	replace age_id=31 if age==85 | age==86 | age==87 | age==88 | age==89	
+	replace age_id=32 if age==90 | age==91 | age==92 | age==93 | age==94 
+	replace age_id=235 if age>=95 & age!=.
+	
+* TIME SINCE VARIABLES
+	gen timesince_alzeimers=age-ph009_16
+	gen timesince_depression=age-mh019_
+	gen timesince_parkinsons=age-ph009_12
+	gen timesince_cataracts=age-ph009_13
+	gen timesince_osteoarthritis=age-ph009_9
+	gen timesince_rheumatoid_arthritis=age-ph009_19
+	gen timesince_asthma=age-ph009_7
+		
+	foreach v of var timesince_alzeimers timesince_depression timesince_parkinsons timesince_cataracts timesince_osteoarthritis timesince_rheumatoid_arthritis timesince_asthma {
+	replace `v'=. if `v'<0
+	} 
+		
+* SYMPTOMS
+
+	* CLEAN
+	rename gali limitedactivities  
+	replace mh002_=0 if mh002_==5
+	rename mh003_ hope	
+	replace hope=2 if hope==5
+	replace hope=0 if hope==2
+	replace mh004_=2 if mh004_==5
+	replace mh004_=0 if mh004_==2
+	replace mh005_=2 if mh005_==5
+	replace mh005_=3 if mh005_==9
+	replace mh006_=2 if mh006_==5
+	replace mh007_=2 if mh007_==5
+	replace mh008_=2 if mh008_==5
+	replace mh008_=3 if mh008_==9
+	replace mh009_=0 if mh009_==5
+	replace mh010_=0 if mh010_==5
+	replace mh011_=2 if mh011_==5
+	replace mh011_=3 if mh011_==9
+	tab (mh012_), gen (mh012_)
+	replace mh013_=0 if mh013_==5
+	replace mh014_=2 if mh014_==5
+	replace mh015_=2 if mh015_==5
+	replace mh016_=2 if mh016_==5
+	replace mh017_=0 if mh017_==5
+	replace mh018_=0 if mh018_==5
+	replace mh020_=0 if mh020_==5
+	replace mh021_=0 if mh021_==5
+	replace mh022_=0 if mh022_==5
+	rename mh026_ feardeath
+	replace ph004_=0 if ph004_==5
+	replace ph088_=0 if ph088_==5
+	rename ph085_ painlevel 
+	replace painlevel=2 if painlevel==3 
+	replace painlevel=3 if painlevel==5
+	foreach v of var mh034_ mh035_ mh036_ {
+		replace `v'=4 if `v'==1 
+		replace `v'=1 if `v'==3
+		replace `v'=3 if `v'==4
+		}
+	gen lonely=1 if (mh034_+mh035_+mh036_)>=7 & (mh034_+mh035_+mh036_)<.
+	replace lonely=0 if (mh034_+mh035_+mh036_)<7
+
+	* REPLACE NONRESPONSE
+	foreach v of var ph005_ mh034_ mh035_ mh036_ ph005_ painlevel ph089d1 ph089d2 ph089d3 ph089d4 ph089dno ph059d8 ph059d9 ph059d10 ph059dot ph088_ ph048d1 ph048d2 ph048d3 ph048d4 ph048d5 ph048d6 ph048d7 ph048d8 ph048d9 ph048d10 ph048dno ph049d1 ph049d2 ph049d3 ph049d4 ph049d5 ph049d6 ph049d7 ph049d8 ph049d9 ph049d10 ph049d11 ph049d12 ph049d13 ph049dno ph059d1 ph059d2 ph059d3 ph059d4 ph059d5 ph059d6 ph059d7 ph059dno ph087d1 ph087d2 ph087d3 ph087d4 ph087d5 ph087d6 ph087d7 ph046_ ph004_ ph003_ mh027_ mh037_ feardeath eyes hearing phinact lifex mh002_ hope mh004_ mh005_ mh006_ mh007_ mh008_ mh009_ mh010_ mh011_ mh012_ mh013_ mh014_ mh015_ mh016_ mh017_ mh018_ mh019_ mh020_ mh021_ mh022_ mh023_ mh024_ mh025_ {
+		replace `v'=. if `v'<0
+		}
+	
+	* SUMMARIZE 
+	sum lifesat lonely limitedactivities painlevel chronic eyesightr hearing bmi weight height phinact lifex mh002_ hope mh004_ mh005_ mh006_ mh007_ mh008_ mh009_ mh010_ mh011_ mh012_1 mh012_2 mh012_3 mh013_ mh014_ mh015_ mh016_ mh017_ mh018_ mh019_ mh020_ mh021_ mh022_ mh023_ mh024_ mh025_ feardeath mh027_ mh037_ ph003_ ph004_ ph005_ ph046_ ph048d1 ph048d2 ph048d3 ph048d4 ph048d5 ph048d6 ph048d7 ph048d8 ph048d9 ph048d10 ph048dno ph049d1 ph049d2 ph049d3 ph049d4 ph049d5 ph049d6 ph049d7 ph049d8 ph049d9 ph049d10 ph049d11 ph049d12 ph049d13 ph049dno ph059d1 ph059d2 ph059d3 ph059d4 ph059d5 ph059d6 ph059d7 ph059dno ph087d1 ph087d2 ph087d3 ph087d4 ph087d5 ph087d6 ph087d7 ph088_ ph089d1 ph089d2 ph089d3 ph089d4 ph089dno ph059d8 ph059d9 ph059d10 ph059dot
+	
+	* SICK DUMMY
+	gen sick=1 if alzeimers==1 |  depression==1 | parkinsons==1 | cataracts==1 | osteoarthritis==1 | rheumatoid_arthritis==1 | asthma==1
+
+	* LOOPED REGRESSION TEST FOR SIGNIFICANCE 
+	
+		global xlist i.areabldgi i.agecat gender i.mstat i.nchildren logincome logworth i.isced i.cjs i.country i.year		
+		reg lifesat $xlist if sick==1, cluster(mergeid2)
+		gen r2original = e(r2_a) 
+			
+		* GENERATE BETA COEFFICIENTS
+		foreach v of var lifesat lonely limitedactivities painlevel chronic eyesightr hearing bmi weight height phinact lifex mh002_ hope mh004_ mh005_ mh006_ mh007_ mh008_ mh009_ mh010_ mh011_ mh012_1 mh012_2 mh012_3 mh013_ mh014_ mh015_ mh016_ mh017_ mh018_ mh019_ mh020_ mh021_ mh022_ mh023_ mh024_ mh025_ feardeath mh027_ mh037_ ph003_ ph004_ ph005_ ph046_ ph048d1 ph048d2 ph048d3 ph048d4 ph048d5 ph048d6 ph048d7 ph048d8 ph048d9 ph048d10 ph048dno ph049d1 ph049d2 ph049d3 ph049d4 ph049d5 ph049d6 ph049d7 ph049d8 ph049d9 ph049d10 ph049d11 ph049d12 ph049d13 ph049dno ph059d1 ph059d2 ph059d3 ph059d4 ph059d5 ph059d6 ph059d7 ph059dno ph087d1 ph087d2 ph087d3 ph087d4 ph087d5 ph087d6 ph087d7 ph088_ ph089d1 ph089d2 ph089d3 ph089d4 ph089dno ph059d8 ph059d9 ph059d10 ph059dot {
+			quietly sum `v'
+			gen b_`v'= ((`v'-r(mean))/r(sd))
+			}
+		
+		* BETA COEFFICIENT COMPARIONS
+		foreach v of var b_lonely b_limitedactivities b_painlevel b_chronic b_eyesightr b_hearing b_bmi b_weight b_height b_phinact b_lifex b_mh002_ b_hope b_mh004_ b_mh005_ b_mh006_ b_mh007_ b_mh008_ b_mh009_ b_mh010_ b_mh011_ b_mh012_1 b_mh012_2 b_mh012_3 b_mh013_ b_mh014_ b_mh015_ b_mh016_ b_mh017_ b_mh018_ b_mh019_ b_mh020_ b_mh021_ b_mh022_ b_mh023_ b_mh024_ b_mh025_ b_feardeath b_mh027_ b_mh037_ b_ph003_ b_ph004_ b_ph005_ b_ph046_ b_ph048d1 b_ph048d2 b_ph048d3 b_ph048d4 b_ph048d5 b_ph048d6 b_ph048d7 b_ph048d8 b_ph048d9 b_ph048d10 b_ph048dno b_ph049d1 b_ph049d2 b_ph049d3 b_ph049d4 b_ph049d5 b_ph049d6 b_ph049d7 b_ph049d8 b_ph049d9 b_ph049d10 b_ph049d11 b_ph049d12 b_ph049d13 b_ph049dno b_ph059d1 b_ph059d2 b_ph059d3 b_ph059d4 b_ph059d5 b_ph059d6 b_ph059d7 b_ph059dno b_ph087d1 b_ph087d2 b_ph087d3 b_ph087d4 b_ph087d5 b_ph087d6 b_ph087d7 b_ph088_ b_ph089d1 b_ph089d2 b_ph089d3 b_ph089d4 b_ph089dno b_ph059d8 b_ph059d9 b_ph059d10 b_ph059dot {
+			reg b_lifesat `v' $xlist if sick==1, cluster(mergeid2)
+			gen c`v' = abs(_b[`v'])
+			}
+		
+		* R2 
+		foreach v of var lonely limitedactivities painlevel chronic eyesightr hearing bmi weight height phinact lifex mh002_ hope mh004_ mh005_ mh006_ mh007_ mh008_ mh009_ mh010_ mh011_ mh012_1 mh012_2 mh012_3 mh013_ mh014_ mh015_ mh016_ mh017_ mh018_ mh019_ mh020_ mh021_ mh022_ mh023_ mh024_ mh025_ feardeath mh027_ mh037_ ph003_ ph004_ ph005_ ph046_ ph048d1 ph048d2 ph048d3 ph048d4 ph048d5 ph048d6 ph048d7 ph048d8 ph048d9 ph048d10 ph048dno ph049d1 ph049d2 ph049d3 ph049d4 ph049d5 ph049d6 ph049d7 ph049d8 ph049d9 ph049d10 ph049d11 ph049d12 ph049d13 ph049dno ph059d1 ph059d2 ph059d3 ph059d4 ph059d5 ph059d6 ph059d7 ph059dno ph087d1 ph087d2 ph087d3 ph087d4 ph087d5 ph087d6 ph087d7 ph088_ ph089d1 ph089d2 ph089d3 ph089d4 ph089dno ph059d8 ph059d9 ph059d10 ph059dot {
+			reg lifesat `v' $xlist if sick==1, cluster(mergeid2)
+			   gen r2`v' = e(r2_a) - r2original			
+			}
+
+		asdoc sum r2*, save(/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/r2test3.doc) replace		
+		asdoc sum cb*, save(/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/coeftest5.doc) replace
+
+		drop b_* r2* cb*
+		
+	* RENAME BIGGEST PREDICTORS
+		rename ph003_ genhealth
+		rename mh037_ feelslonely
+		rename mh004_ suicide
+		rename mh023_ fearworst
+		rename mh002_ sadordepressed
+		rename mh018_ depressionever
+		rename mh024_ nervous
+		rename mh025_ handstrembling
+		rename mh010_ irritable
+		rename ph005_ limitedinactivities
+		rename ph049dno usualactivities 
+		rename mh027_ feltfaint
+		rename mh013_ fatigue
+		rename ph089dno frailty	
+		gen enjoyment=0 if mh016_==1
+		replace enjoyment=1 if mh016_==2
+		rename mh009_ interested
+		
+		* HEALTH IN GENERAL
+		tab genhealth
+
+		* LONELINESS	
+		tab feelslonely
+		tab lonely
+
+		* OPTIMISM
+		tab lifex
+		tab suicide
+		tab hope
+		tab fearworst
+		tab feardeath
+
+		* DEPRESSION OR ANXIETY
+		tab sadordepressed
+		tab depressionever
+		tab nervous
+		tab handstrembling
+		tab irritable
+
+		* USUAL ACTIVITIES 
+		tab limitedinactivities
+		tab usualactivities
+
+		* ENERGY
+		tab feltfaint
+		tab fatigue
+		tab frailty
+
+		* ENGAGEMENT
+		tab enjoyment
+		tab interested
+		
+		tab (feelslonely), gen (feelslonely)
+		tab (limitedinactivities), gen (limitedinactivities)
+		foreach v of var hope enjoyment {
+			replace `v'=3 if `v'==1
+			replace `v'=1 if `v'==0
+			replace `v'=0 if `v'==3 
+			}
+	
+		global symptoms feelslonely1 feelslonely2 hope sadordepressed limitedinactivities1 limitedinactivities2 fatigue enjoyment
+		reg lifesat $symptoms $xlist, cluster(mergeid2)
+		
+		* healthy symptom prevalence
+		foreach v of var $symptoms {
+			bysort year age_id: egen h_s_prev`v' = mean(`v') if comorbid==0 & `v'<.
+			}
+		foreach v of var h_s_prev* {
+			bysort year age_id: egen test`v' = max(`v') 
+			}	
+		drop h_s_prev*
+		rename testh_s_prev* h_s_prev*
+			
+	* COEFPLOT 	
+		eststo v1: reg lifesat $symptoms $xlist if alzeimers==1, cluster(mergeid2)
+		eststo v2: reg lifesat $symptoms $xlist if anxiety==1, cluster(mergeid2)
+		eststo v3: reg lifesat $symptoms $xlist if cataracts==1, cluster(mergeid2)
+		eststo v4: reg lifesat $symptoms $xlist if depression==1, cluster(mergeid2)
+		eststo v5: reg lifesat $symptoms $xlist if osteoarthritis==1, cluster(mergeid2)
+		eststo v6: reg lifesat $symptoms $xlist if rheumatoid_arthritis==1, cluster(mergeid2)
+		eststo v7: reg lifesat $symptoms $xlist if parkinsons==1, cluster(mergeid2)
+		
+		coefplot (v1), keep(feelslonely1 hope sadordepressed limitedinactivities1 fatigue enjoyment) vertical sort legend(off) recast(bar) barwidth(0.5) citop ciopts(recast(rcap)) title("Alzheimer's", margin(b=4)) ylab(0 -.25 -.5 -.75 -1 -1.25)
+		coefplot (v2), keep(feelslonely1 hope sadordepressed limitedinactivities1 fatigue enjoyment) vertical sort legend(off) recast(bar) barwidth(0.5) citop ciopts(recast(rcap)) title("Anxiety", margin(b=4)) ylab(0 -.25 -.5 -.75 -1 -1.25)
+		coefplot (v3), keep(feelslonely1 hope sadordepressed limitedinactivities1 fatigue enjoyment) vertical sort legend(off) recast(bar) barwidth(0.5) citop ciopts(recast(rcap)) title("Cataracts", margin(b=4)) ylab(0 -.25 -.5 -.75 -1 -1.25)
+		coefplot (v4), keep(feelslonely1 hope sadordepressed limitedinactivities1 fatigue enjoyment) vertical sort legend(off) recast(bar) barwidth(0.5) citop ciopts(recast(rcap)) title("Depression", margin(b=4)) ylab(0 -.25 -.5 -.75 -1 -1.25)
+		coefplot (v5), keep(feelslonely1 hope sadordepressed limitedinactivities1 fatigue enjoyment) vertical sort legend(off) recast(bar) barwidth(0.5) citop ciopts(recast(rcap)) title("Osteoarthritis", margin(b=4)) ylab(0 -.25 -.5 -.75 -1 -1.25)
+		coefplot (v6), keep(feelslonely1 hope sadordepressed limitedinactivities1 fatigue enjoyment) vertical sort legend(off) recast(bar) barwidth(0.5) citop ciopts(recast(rcap)) title("Rheumatoid arthritis", margin(b=4)) ylab(0 -.25 -.5 -.75 -1 -1.25)
+		coefplot (v7), keep(feelslonely1 hope sadordepressed limitedinactivities1 fatigue enjoyment) vertical sort legend(off) recast(bar) barwidth(0.5) citop ciopts(recast(rcap)) title("Parkinsons", margin(b=4)) ylab(0 -.25 -.5 -.75 -1 -1.25)
+		
+			
+	* COEFPLOT 	
+		eststo v1: reg lifesat alzeimers $xlist, cluster(mergeid2)
+		eststo v2: reg lifesat anxiety $xlist, cluster(mergeid2)
+		eststo v3: reg lifesat asthma $xlist, cluster(mergeid2)
+		eststo v4: reg lifesat cataracts $xlist, cluster(mergeid2)
+		eststo v5: reg lifesat depression $xlist, cluster(mergeid2)
+		eststo v6: reg lifesat osteoarthritis $xlist, cluster(mergeid2)
+		eststo v7: reg lifesat parkinsons $xlist, cluster(mergeid2)
+		eststo v8: reg lifesat rheumatoid_arthritis $xlist, cluster(mergeid2)
+		
+		coefplot ///
+			(v1) (v2) (v3) (v4) (v5) (v6) (v7) (v8), ///
+			keep(alzeimers anxiety asthma cataracts depression osteoarthritis parkinsons rheumatoid_arthritis) vertical ///
+			sort ///
+			legend(off) ///
+			recast(bar) barwidth(0.5) ///
+			citop ///
+			ciopts(recast(rcap)) ///
+			ylab(0 -.25 -.5 -.75 -1 -1.25 -1.5) ///
+			title("Happiness burden of disease (individual)", margin(b=4))
+			
+save "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVES1-2-3-4-5-6-7.dta", replace
+
+/************************************************************
+
+					PATIENT HAPPINESS
+		  
+************************************************************/
+
+	* ALZEIMERS
+	
+		clear 
+		use  "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVES1-2-3-4-5-6-7.dta", clear
+		gen cause_id=543 if alzeimers==1
+		
+		global symptoms feelslonely1 feelslonely2 hope sadordepressed limitedinactivities1 limitedinactivities2 fatigue enjoyment
+		reg lifesat $symptoms $xlist if alzeimers==1, cluster(mergeid2)
+		foreach v of var $symptoms {
+				gen sw_`v'=abs(_b[`v']) if alzeimers==1
+				}
+
+		global xlist i.areabldgi i.agecat gender i.mstat i.nchildren logincome logworth i.isced i.cjs i.country i.year		
+		reg lifesat alzeimers $xlist, cluster(mergeid2)
+		
+		keep if cause_id==543 
+		keep if cause_id!=. & location_id!=. & age_id!=.
+		
+		bysort year location_id age_id: egen ahap=mean(lifesat)
+		gen phap=ahap-_b[alzeimers]
+
+		predict lifesat2
+		bysort year location_id age_id: egen ahap_pred=mean(lifesat2)
+		gen phap_pred=ahap_pred-_b[alzeimers]
+		
+		foreach v of var $symptoms {
+			bysort year age_id: egen s_`v'=mean(`v') if `v'<.
+			gen treat_s_`v'=s_`v'-h_s_prev`v'
+			}
+			
+		keep year cause_id location_id age_id ahap ahap_pred phap phap_pred s_* sw_* treat_s* h_s*
+		order year cause_id location_id age_id ahap ahap_pred phap phap_pred s_* sw_*
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/test1.dta", replace
+		
+	* ANXIETY
+	
+		clear 
+		use  "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVES1-2-3-4-5-6-7.dta", clear
+		gen cause_id=571 if anxiety==1
+		
+		global symptoms feelslonely1 feelslonely2 hope sadordepressed limitedinactivities1 limitedinactivities2 fatigue enjoyment
+		reg lifesat $symptoms $xlist if anxiety==1, cluster(mergeid2)
+		foreach v of var $symptoms {
+				gen sw_`v'=abs(_b[`v']) if anxiety==1
+				}
+		
+		global xlist i.areabldgi i.agecat gender i.mstat i.nchildren logincome logworth i.isced i.cjs i.country i.year		
+		reg lifesat anxiety $xlist, cluster(mergeid2)
+		
+		keep if cause_id==571
+		keep if cause_id!=. & location_id!=. & age_id!=.
+		
+		bysort year location_id age_id: egen ahap=mean(lifesat)
+		gen phap=ahap-_b[anxiety]
+
+		predict lifesat2
+		bysort year location_id age_id: egen ahap_pred=mean(lifesat2)
+		gen phap_pred=ahap_pred-_b[anxiety]
+		
+		foreach v of var $symptoms {
+			bysort year age_id: egen s_`v'=mean(`v') if `v'<.
+			gen treat_s_`v'=s_`v'-h_s_prev`v'
+			}
+			
+		keep year cause_id location_id age_id ahap ahap_pred phap phap_pred s_* sw_* treat_s* h_s*
+		order year cause_id location_id age_id ahap ahap_pred phap phap_pred s_* sw_*
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/test2.dta", replace
+				
+	* ASTHMA
+	
+		clear 
+		use  "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVES1-2-3-4-5-6-7.dta", clear
+		gen cause_id=515 if asthma==1
+				
+		global xlist i.areabldgi i.agecat gender i.mstat i.nchildren logincome logworth i.isced i.cjs i.country i.year		
+		reg lifesat asthma $xlist, cluster(mergeid2)
+		
+		keep if cause_id==515
+		keep if cause_id!=. & location_id!=. & age_id!=.
+		
+		bysort year location_id age_id: egen ahap=mean(lifesat)
+		gen phap=ahap-_b[asthma]
+
+		predict lifesat2
+		bysort year location_id age_id: egen ahap_pred=mean(lifesat2)
+		gen phap_pred=ahap_pred-_b[asthma]
+		
+		foreach v of var $symptoms {
+			bysort year age_id: egen s_`v'=mean(`v') if `v'<.
+			gen treat_s_`v'=s_`v'-h_s_prev`v'
+			}
+			
+		keep year cause_id location_id age_id ahap ahap_pred phap phap_pred s_* treat_s* h_s*
+		order year cause_id location_id age_id ahap ahap_pred phap phap_pred s_* 
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/test3.dta", replace
+						
+	* CATARACTS
+
+		clear 
+		use  "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVES1-2-3-4-5-6-7.dta", clear
+		gen cause_id=671 if cataracts==1
+		
+		global symptoms feelslonely1 feelslonely2 hope sadordepressed limitedinactivities1 limitedinactivities2 fatigue enjoyment
+		reg lifesat $symptoms $xlist if cataracts==1, cluster(mergeid2)
+		foreach v of var $symptoms {
+				gen sw_`v'=abs(_b[`v']) if cataracts==1
+				}
+		
+		global xlist i.areabldgi i.agecat gender i.mstat i.nchildren logincome logworth i.isced i.cjs i.country i.year		
+		reg lifesat cataracts $xlist, cluster(mergeid2)
+		
+		keep if cause_id==671
+		keep if cause_id!=. & location_id!=. & age_id!=.
+		
+		bysort year location_id age_id: egen ahap=mean(lifesat)
+		gen phap=ahap-_b[cataracts]
+
+		predict lifesat2
+		bysort year location_id age_id: egen ahap_pred=mean(lifesat2)
+		gen phap_pred=ahap_pred-_b[cataracts]
+		
+		foreach v of var $symptoms {
+			bysort year age_id: egen s_`v'=mean(`v') if `v'<.
+			gen treat_s_`v'=s_`v'-h_s_prev`v'
+			}
+			
+		keep year cause_id location_id age_id ahap ahap_pred phap phap_pred s_* sw_* treat_s* h_s*
+		order year cause_id location_id age_id ahap ahap_pred phap phap_pred s_* sw_*
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/test4.dta", replace
+		
+	* DEPRESSION
+	
+		clear 
+		use  "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVES1-2-3-4-5-6-7.dta", clear
+		gen cause_id=568 if depression==1
+		
+		global symptoms feelslonely1 feelslonely2 hope sadordepressed limitedinactivities1 limitedinactivities2 fatigue enjoyment
+		reg lifesat $symptoms $xlist if depression==1, cluster(mergeid2)
+		foreach v of var $symptoms {
+				gen sw_`v'=abs(_b[`v']) if depression==1
+				}
+		
+		global xlist i.areabldgi i.agecat gender i.mstat i.nchildren logincome logworth i.isced i.cjs i.country i.year		
+		reg lifesat depression $xlist, cluster(mergeid2)
+		
+		keep if cause_id==568
+		keep if cause_id!=. & location_id!=. & age_id!=.
+		
+		bysort year location_id age_id: egen ahap=mean(lifesat)
+		gen phap=ahap-_b[depression]
+
+		predict lifesat2
+		bysort year location_id age_id: egen ahap_pred=mean(lifesat2)
+		gen phap_pred=ahap_pred-_b[depression]
+		
+		foreach v of var $symptoms {
+			bysort year age_id: egen s_`v'=mean(`v') if `v'<.
+			gen treat_s_`v'=s_`v'-h_s_prev`v'
+			}
+			
+		keep year cause_id location_id age_id ahap ahap_pred phap phap_pred s_* sw_* treat_s* h_s*
+		order year cause_id location_id age_id ahap ahap_pred phap phap_pred s_* sw_*
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/test5.dta", replace
+									
+	* OSTEOARTHRITIS
+	
+		clear 
+		use  "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVES1-2-3-4-5-6-7.dta", clear
+		gen cause_id=628 if osteoarthritis==1
+		
+		global symptoms feelslonely1 feelslonely2 hope sadordepressed limitedinactivities1 limitedinactivities2 fatigue enjoyment
+		reg lifesat $symptoms $xlist if osteoarthritis==1, cluster(mergeid2)
+		foreach v of var $symptoms {
+				gen sw_`v'=abs(_b[`v']) if osteoarthritis==1
+				}
+			
+		global xlist i.areabldgi i.agecat gender i.mstat i.nchildren logincome logworth i.isced i.cjs i.country i.year		
+		reg lifesat osteoarthritis $xlist, cluster(mergeid2)
+		
+		keep if cause_id==628
+		keep if cause_id!=. & location_id!=. & age_id!=.
+		
+		bysort year location_id age_id: egen ahap=mean(lifesat)
+		gen phap=ahap-_b[osteoarthritis]
+
+		predict lifesat2
+		bysort year location_id age_id: egen ahap_pred=mean(lifesat2)
+		gen phap_pred=ahap_pred-_b[osteoarthritis]
+		
+		foreach v of var $symptoms {
+			bysort year age_id: egen s_`v'=mean(`v') if `v'<.
+			gen treat_s_`v'=s_`v'-h_s_prev`v'
+			}
+			
+		keep year cause_id location_id age_id ahap ahap_pred phap phap_pred s_* sw_* treat_s* h_s*
+		order year cause_id location_id age_id ahap ahap_pred phap phap_pred s_* sw_*
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/test6.dta", replace
+										
+	* PARKINSONS
+	
+		clear 
+		use  "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVES1-2-3-4-5-6-7.dta", clear
+		gen cause_id=544 if parkinsons==1
+		
+		global symptoms feelslonely1 feelslonely2 hope sadordepressed limitedinactivities1 limitedinactivities2 fatigue enjoyment
+		reg lifesat $symptoms $xlist if parkinsons==1, cluster(mergeid2)
+		foreach v of var $symptoms {
+				gen sw_`v'=abs(_b[`v']) if parkinsons==1
+				}
+	
+		global xlist i.areabldgi i.agecat gender i.mstat i.nchildren logincome logworth i.isced i.cjs i.country i.year		
+		reg lifesat parkinsons $xlist, cluster(mergeid2)
+			
+		keep if cause_id==544
+		keep if cause_id!=. & location_id!=. & age_id!=.
+		
+		bysort year location_id age_id: egen ahap=mean(lifesat)
+		gen phap=ahap-_b[parkinsons]
+
+		predict lifesat2
+		bysort year location_id age_id: egen ahap_pred=mean(lifesat2)
+		gen phap_pred=ahap_pred-_b[parkinsons]
+		
+		foreach v of var $symptoms {
+			bysort year age_id: egen s_`v'=mean(`v') if `v'<.
+			gen treat_s_`v'=s_`v'-h_s_prev`v'
+			}
+			
+		keep year cause_id location_id age_id ahap ahap_pred phap phap_pred s_* sw_* treat_s* h_s*
+		order year cause_id location_id age_id ahap ahap_pred phap phap_pred s_* sw_*
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/test7.dta", replace
+										
+										
+	* RHEUMATOID ARTHRITIS
+	
+		clear 
+		use  "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVES1-2-3-4-5-6-7.dta", clear
+		gen cause_id=627 if rheumatoid_arthritis==1
+		
+		global symptoms feelslonely1 feelslonely2 hope sadordepressed limitedinactivities1 limitedinactivities2 fatigue enjoyment
+		reg lifesat $symptoms $xlist if rheumatoid_arthritis==1, cluster(mergeid2)
+		foreach v of var $symptoms {
+				gen sw_`v'=abs(_b[`v']) if rheumatoid_arthritis==1
+				}
+
+		global xlist i.areabldgi i.agecat gender i.mstat i.nchildren logincome logworth i.isced i.cjs i.country i.year		
+		reg lifesat rheumatoid_arthritis $xlist, cluster(mergeid2)
+		
+		keep if cause_id==627
+		keep if cause_id!=. & location_id!=. & age_id!=.
+		
+		bysort year location_id age_id: egen ahap=mean(lifesat)
+		gen phap=ahap-_b[rheumatoid_arthritis]
+
+		predict lifesat2
+		bysort year location_id age_id: egen ahap_pred=mean(lifesat2)
+		gen phap_pred=ahap_pred-_b[rheumatoid_arthritis]
+		
+		foreach v of var $symptoms {
+			bysort year age_id: egen s_`v'=mean(`v') if `v'<.
+			gen treat_s_`v'=s_`v'-h_s_prev`v'
+			}
+			
+		keep year cause_id location_id age_id ahap ahap_pred phap phap_pred s_* sw_* treat_s* h_s*
+		order year cause_id location_id age_id ahap ahap_pred phap phap_pred s_* sw_*
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/test8.dta", replace
+										
+
+	use "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/test1.dta", clear
+	append using "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/test2.dta"
+	append using "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/test3.dta"
+	append using "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/test4.dta"
+	append using "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/test5.dta"
+	append using "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/test6.dta"
+	append using "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/test7.dta"
+	append using "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/test8.dta"
+	
+	label var ahap "actual happiness by year, cause, location, age"
+	label var phap "potential actual happiness by year, cause, location, age"
+	label var ahap_pred "predicted happiness by year, cause, location, age"
+	label var phap_pred "potential predicted happiness by year, cause, location, age"
+	
+	gen id = string(year) + " " + string(cause_id) + " " + string(location_id) + " " + string(age_id) 
+	quietly bysort id:  gen dup = cond(_N==1,0,_n)
+	drop if dup>1
+	drop dup
+	
+	save "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/testfinal.dta", replace
+
+	
+/************************************************************
+
+					PREPARE GBD DATA
+		  
+************************************************************/	
+	
+clear
+use "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/IHME-GBD_2017_DATA-5cd6017a-1allyears/IHME-GBD_2017_DATA-5cd6017a-1.dta"
+order year 
+sort year cause_name location_name age_name metric_name
+
+drop if age_id==21 | age_id==27 | age_id==22
+
+* generate measure specific value columns	
+gen val_inc = val if measure_id==6
+	gen upper_inc = upper if measure_id==6
+	gen lower_inc = lower if measure_id==6
+gen val_prev = val if measure_id==5
+	gen upper_prev = upper if measure_id==5
+	gen lower_prev = lower if measure_id==5
+gen val_death = val if measure_id==1
+	gen upper_death = upper if measure_id==1
+	gen lower_death = lower if measure_id==1
+gen val_YLL = val	if measure_id==4
+	gen upper_YLL = upper if measure_id==4
+	gen lower_YLL = lower if measure_id==4	
+gen val_YLD = val	if measure_id==3
+	gen upper_YLD = upper if measure_id==3
+	gen lower_YLD = lower if measure_id==3	
+
+
+* generate cause value and cause death
+gen cause_pop = val if measure_id==5 & cause_id==294
+gen cause_death = val if measure_id==1 & cause_id==294
+	foreach v of var cause_pop cause_death {
+		bysort year location_id age_id metric_id: egen `v'try = max(`v')
+		replace `v'=`v'try
+		drop `v'try
+		} 
+drop if cause_id==294		
+
+* replace by location, age, cause, and metric	
+foreach v of var val_YLD upper_YLD lower_YLD val_inc upper_inc lower_inc val_prev upper_prev lower_prev val_death upper_death lower_death val_YLL upper_YLL lower_YLL {
+	bysort year location_id age_id cause_id metric_id: egen `v'try = max(`v')
+	replace `v'=`v'try
+	drop `v'try
+	} 
+
+* create ID and drop duplicates
+gen id = string(year) + " " + string(location_id) + " " + string(age_id) + " " + string(cause_id) + " " + string(metric_id)
+	quietly bysort id:  gen dup = cond(_N==1,0,_n)
+	drop if dup>1
+	drop dup
+
+* replace death variables
+foreach v of var val_death upper_death lower_death val_YLL upper_YLL lower_YLL {
+	replace `v'=0 if `v'==.
+	} 
+
+drop id
+gen id = string(year) + " " + string(location_id) + " " + string(age_id) 
+	merge m:1 id using "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/life expectancy/IHME-GBD_2017_DATA-7571d53b-13.dta" 
+	drop if _merge==2
+	drop _merge
+	drop id
+
+sort metric_id year cause_name location_name age_name metric_name
+drop measure_id measure_name val upper lower
+
+* DROP ALL UPPER AND LOWER ESTIMATES
+	drop upper_YLD lower_YLD upper_inc lower_inc upper_prev lower_prev upper_death lower_death upper_YLL lower_YLL lifeexpectancy_upper lifeexpectancy_lower	
+
+* LABEL VARIABLES
+	label var val_inc "incidence by cause"
+	label var val_prev "prevalence by cause"
+	label var val_death "death by cause"
+	label var val_YLL "years lost of life by cause"
+	label var val_YLD "years lost due to disability by cause"
+	label var cause_pop "total population"
+	label var cause_death "total deaths"
+	label var lifeexpectancy "healthy life expectancy"
+	
+* LIFE TABLES
+	rename cause_pop population
+	rename cause_death death
+	
+	* death rate due to all reasons
+	gen mrate = death/population
+		label var mrate "overall mortality rate"
+	* death rate due to all reasons other than cause
+	gen mrate_notcause = (death-val_death)/population
+		label var mrate_notcause "overall mortality rate not including cause"
+	* total deaths in cause population
+	gen val_death_total = (val_death)+(val_prev*mrate_notcause)
+		label var val_death_total "total deaths within cause population"
+	* total death rate of cause population
+	gen mrate_within = val_death_total/val_prev
+		label var mrate_within "overall mortality rate within cause population"
+				
+	* healthy life expectancy
+	gen n=5 if age_id!=22
+	gen a=0.5 if age_id!=22
+		replace a=. if age_id==32
+	gen qx=(n*mrate)/(1+n*(1-a)*mrate)
+		replace qx=1 if age_id==32
+	gen px=1-qx
+	gen i=100000 if age_id==13
+		replace i=i[_n-1]-(i[_n-1]*q[_n-1]) if age_id!=13 & age_id!=22
+	gen dx=i*q
+		replace dx=i if age_id==32
+	gen lx=(a*n*dx)+(i[_n+1]*n)
+		replace lx=i/mrate if age_id==32
+	gen t=lx if age_id==32
+		replace t=lx+t[_n+1] if age_id!=32 & age_id!=22
+		replace t=lx+t[_n+1] if age_id!=32 & age_id!=22
+		replace t=lx+t[_n+1] if age_id!=32 & age_id!=22
+		replace t=lx+t[_n+1] if age_id!=32 & age_id!=22
+		replace t=lx+t[_n+1] if age_id!=32 & age_id!=22
+		replace t=lx+t[_n+1] if age_id!=32 & age_id!=22
+		replace t=lx+t[_n+1] if age_id!=32 & age_id!=22
+		replace t=lx+t[_n+1] if age_id!=32 & age_id!=22
+		replace t=lx+t[_n+1] if age_id!=32 & age_id!=22
+		replace t=lx+t[_n+1] if age_id!=32 & age_id!=22
+	gen ex_healthy=t/i	
+		label var ex_healthy "healthy life expectancy calculated"
+		* order location_id location_name cause_id cause_name age_id age_name n population death mrate a qx px i dx lx t ex_healthy lifeexpectancy
+	
+	* cause specific life expectancy 
+	drop n a qx px i dx lx t
+	gen n=5 if age_id!=22
+	gen a=0.5 if age_id!=22
+		replace a=. if age_id==32
+	gen qx=(n*mrate_within)/(1+n*(1-a)*mrate_within)
+		replace qx=1 if age_id==32
+	gen px=1-qx
+	gen i=100000 if age_id==13
+		replace i=i[_n-1]-(i[_n-1]*q[_n-1]) if age_id!=13 & age_id!=22
+	gen dx=i*q
+		replace dx=i if age_id==32
+	gen lx=(a*n*dx)+(i[_n+1]*n)
+		replace lx=i/mrate_within if age_id==32
+	gen t=lx if age_id==32
+		replace t=lx+t[_n+1] if age_id!=32 & age_id!=22
+		replace t=lx+t[_n+1] if age_id!=32 & age_id!=22
+		replace t=lx+t[_n+1] if age_id!=32 & age_id!=22
+		replace t=lx+t[_n+1] if age_id!=32 & age_id!=22
+		replace t=lx+t[_n+1] if age_id!=32 & age_id!=22
+		replace t=lx+t[_n+1] if age_id!=32 & age_id!=22
+		replace t=lx+t[_n+1] if age_id!=32 & age_id!=22
+		replace t=lx+t[_n+1] if age_id!=32 & age_id!=22
+		replace t=lx+t[_n+1] if age_id!=32 & age_id!=22
+		replace t=lx+t[_n+1] if age_id!=32 & age_id!=22
+	gen ex_sick=t/i
+		label var ex_sick "sick life expectancy calculated"
+		* order location_id location_name cause_id cause_name age_id age_name n population death mrate a qx px i dx lx t ex_sick ex_healthy lifeexpectancy
+	
+	* averages
+	bysort metric_id year cause_id age_id: egen ex_sick_avg=mean(ex_sick)
+		label var ex_sick_avg "euro average sick life expectancy calculated" 
+	bysort metric_id year age_id: egen ex_healthy_avg=mean(ex_healthy)
+		label var ex_healthy_avg "euro average healthy life expectancy calculated" 
+	bysort metric_id year age_id: egen lifeexpectancy_avg=mean(lifeexpectancy)
+		label var lifeexpectancy_avg "euro average healthy life expectancy" 
+		
+	sort metric_id year cause_name location_name age_name metric_name
+	order year location_id location_name sex_id sex_name age_id age_name cause_id cause_name metric_id metric_name val_inc val_prev val_death val_death_total val_YLL population death mrate mrate_notcause mrate_within ex_sick ex_healthy lifeexpectancy ex_sick_avg ex_healthy_avg lifeexpectancy_avg	
+	
+	* drop unnecessary life table variables
+	drop n a qx px i dx lx t
+	
+* OTHER DEATH MODEL
+
+	gen mrate_cause=val_death/val_prev if age_id!=22
+		label var mrate_cause "cause specific mortality rate"
+	gen mrate_cause_x5=mrate_cause*5
+		label var mrate_cause_x5 "cause specific mortality rate x5"
+
+	* generate cumulate death probability based on age category
+	bysort metric_id year location_id cause_id: egen d0=sum(mrate_cause_x5) if age_id==13 
+	bysort metric_id year location_id cause_id: egen d1=sum(mrate_cause_x5) if age_id==13 | age_id==14
+	bysort metric_id year location_id cause_id: egen d2=sum(mrate_cause_x5) if age_id==13 | age_id==14 | age_id==15
+	bysort metric_id year location_id cause_id: egen d3=sum(mrate_cause_x5) if age_id==13 | age_id==14 | age_id==15 | age_id==16
+	bysort metric_id year location_id cause_id: egen d4=sum(mrate_cause_x5) if age_id==13 | age_id==14 | age_id==15 | age_id==16 | age_id==17
+	bysort metric_id year location_id cause_id: egen d5=sum(mrate_cause_x5) if age_id==13 | age_id==14 | age_id==15 | age_id==16 | age_id==17 | age_id==18
+	bysort metric_id year location_id cause_id: egen d6=sum(mrate_cause_x5) if age_id==13 | age_id==14 | age_id==15 | age_id==16 | age_id==17 | age_id==18 | age_id==19
+	bysort metric_id year location_id cause_id: egen d7=sum(mrate_cause_x5) if age_id==13 | age_id==14 | age_id==15 | age_id==16 | age_id==17 | age_id==18 | age_id==19 | age_id==20
+	bysort metric_id year location_id cause_id: egen d8=sum(mrate_cause_x5) if age_id==13 | age_id==14 | age_id==15 | age_id==16 | age_id==17 | age_id==18 | age_id==19 | age_id==20 | age_id==30
+	bysort metric_id year location_id cause_id: egen d9=sum(mrate_cause_x5) if age_id==13 | age_id==14 | age_id==15 | age_id==16 | age_id==17 | age_id==18 | age_id==19 | age_id==20 | age_id==30 | age_id==31
+	bysort metric_id year location_id cause_id: egen d10=sum(mrate_cause_x5) if age_id==13 | age_id==14 | age_id==15 | age_id==16 | age_id==17 | age_id==18 | age_id==19 | age_id==20 | age_id==30 | age_id==31 | age_id==32
+	
+	* replace columns with whole numbers 
+	foreach v of var d0 d1 d2 d3 d4 d5 d6 d7 d8 d9 d10 {
+		bysort metric_id year location_id cause_id: egen d`v'=max(`v') if (age_id!=27 & age_id!=22)
+		replace `v'=d`v'
+		drop d`v'
+		}
+	
+	* generate death probability starting at age 40
+	gen mrate_cause_40=mrate_cause_x5 if age_id==13
+		replace mrate_cause_40=d1 if age_id==14
+		replace mrate_cause_40=d2 if age_id==15
+		replace mrate_cause_40=d3 if age_id==16
+		replace mrate_cause_40=d4 if age_id==17
+		replace mrate_cause_40=d5 if age_id==18
+		replace mrate_cause_40=d6 if age_id==19
+		replace mrate_cause_40=d7 if age_id==20
+		replace mrate_cause_40=d8 if age_id==30
+		replace mrate_cause_40=d9 if age_id==31
+		replace mrate_cause_40=d10 if age_id==32
+	
+	* generate death probability for other ages	
+	gen mrate_cause_45=mrate_cause_40-d0 if age_id>=14
+	gen mrate_cause_50=mrate_cause_40-d1 if age_id>=15
+	gen mrate_cause_55=mrate_cause_40-d2 if age_id>=16
+	gen mrate_cause_60=mrate_cause_40-d3 if age_id>=17
+	gen mrate_cause_65=mrate_cause_40-d4 if age_id>=18
+	gen mrate_cause_70=mrate_cause_40-d5 if age_id>=19
+	gen mrate_cause_75=mrate_cause_40-d6 if age_id>=20
+	gen mrate_cause_80=mrate_cause_40-d7 if age_id>=30
+	gen mrate_cause_85=mrate_cause_40-d8 if age_id>=31
+	gen mrate_cause_90=mrate_cause_40-d9 if age_id>=32
+	
+	* replace probabilities higher than 1 
+	foreach v of var mrate_cause_40 mrate_cause_45 mrate_cause_50 mrate_cause_55 mrate_cause_60 mrate_cause_65 mrate_cause_70 mrate_cause_75 mrate_cause_80 mrate_cause_85 mrate_cause_90 {
+		replace `v'=1 if `v'>1 & `v'!=.
+		label var `v' "cumulative morality rate by age"
+		}
+	drop d0 d1 d2 d3 d4 d5 d6 d7 d8 d9 d10
+
+	* generate average death prob by cause
+	bysort metric_id year cause_id age_id: egen mrate_cause_avg=mean(mrate_cause) if (age_id!=27 & age_id!=22)
+		label var mrate_cause_avg "average cause specific mortality rate"
+	gen mrate_cause_avg_x5=mrate_cause_avg*5
+		label var mrate_cause_avg_x5 "average cause specific mortality rate x5"
+	
+	* generate average death prob by cause by age
+	bysort metric_id year cause_id age_id: egen mrate_cause_avg40=mean(mrate_cause_40) if (age_id!=27 & age_id!=22)
+	bysort metric_id year cause_id age_id: egen mrate_cause_avg45=mean(mrate_cause_45) if (age_id!=27 & age_id!=22)
+	bysort metric_id year cause_id age_id: egen mrate_cause_avg50=mean(mrate_cause_50) if (age_id!=27 & age_id!=22)
+	bysort metric_id year cause_id age_id: egen mrate_cause_avg55=mean(mrate_cause_55) if (age_id!=27 & age_id!=22)
+	bysort metric_id year cause_id age_id: egen mrate_cause_avg60=mean(mrate_cause_60) if (age_id!=27 & age_id!=22)
+	bysort metric_id year cause_id age_id: egen mrate_cause_avg65=mean(mrate_cause_65) if (age_id!=27 & age_id!=22)
+	bysort metric_id year cause_id age_id: egen mrate_cause_avg70=mean(mrate_cause_70) if (age_id!=27 & age_id!=22)
+	bysort metric_id year cause_id age_id: egen mrate_cause_avg75=mean(mrate_cause_75) if (age_id!=27 & age_id!=22)
+	bysort metric_id year cause_id age_id: egen mrate_cause_avg80=mean(mrate_cause_80) if (age_id!=27 & age_id!=22)
+	bysort metric_id year cause_id age_id: egen mrate_cause_avg85=mean(mrate_cause_85) if (age_id!=27 & age_id!=22)
+	bysort metric_id year cause_id age_id: egen mrate_cause_avg90=mean(mrate_cause_90) if (age_id!=27 & age_id!=22)
+	
+	foreach v of var mrate_cause_avg40 mrate_cause_avg45 mrate_cause_avg50 mrate_cause_avg55 mrate_cause_avg60 mrate_cause_avg65 mrate_cause_avg70 mrate_cause_avg75 mrate_cause_avg80 mrate_cause_avg85 mrate_cause_avg90 {
+		replace `v'=1 if `v'>1 & `v'!=.
+		label var `v' "average cumulative morality rate by age"
+		}
+		
+* merge with happiness data
+
+	gen id = string(year) + " " + string(cause_id) + " " + string(location_id) + " " + string(age_id) 
+	merge m:1 id using "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/testfinal.dta" 
+	drop if _merge==2
+	drop _merge
+
+sort year cause_name location_name age_name metric_name
+
+* replace happiness 
+	
+	bysort metric_id year cause_id age_id: egen ahap_euro=mean(ahap)
+		label var ahap_euro "european average actual happiness by year, cause, age"
+	bysort metric_id year cause_id age_id: egen phap_euro=mean(phap)
+		label var phap_euro "european average potential actual happiness by year, cause, age"
+		
+	bysort metric_id year cause_id age_id: egen ahap_euro_pred=mean(ahap_pred)
+		label var ahap_euro_pred "european average predicted actual happiness by year, cause, age"
+	bysort metric_id year cause_id age_id: egen phap_euro_pred=mean(phap_pred)
+		label var phap_euro_pred "european average predicted actual happiness by year, cause, age"
+
+sort metric_id year cause_name location_name age_name metric_name
+order year location_id location_name sex_id sex_name age_id age_name cause_id cause_name metric_id metric_name val_inc val_prev val_death val_death_total val_YLL val_YLD population death mrate mrate_notcause mrate_within ex_sick ex_healthy lifeexpectancy ex_sick_avg ex_healthy_avg lifeexpectancy_avg mrate_cause mrate_cause_x5 mrate_cause_40 mrate_cause_45 mrate_cause_50 mrate_cause_55 mrate_cause_60 mrate_cause_65 mrate_cause_70 mrate_cause_75 mrate_cause_80 mrate_cause_85 mrate_cause_90 mrate_cause_avg mrate_cause_avg_x5 mrate_cause_avg40 mrate_cause_avg45 mrate_cause_avg50 mrate_cause_avg55 mrate_cause_avg60 mrate_cause_avg65 mrate_cause_avg70 mrate_cause_avg75 mrate_cause_avg80 mrate_cause_avg85 mrate_cause_avg90 id ahap ahap_pred phap phap_pred ahap_euro phap_euro ahap_euro_pred phap_euro_pred
+save "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/Global-Burden-Disease-Data-WALY-v2.dta", replace
+
+
+/************************************************************
+
+					  CALCULATE WALYs
+		  
+************************************************************/	
+		
+	clear
+	use "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/Global-Burden-Disease-Data-WALY-v2.dta"
+
+	*** KEEP ONLY 45-95 ***
+	
+		drop if age_id<14
+		
+	*** KEEP ONLY PREDICTED ***
+	
+		drop ahap phap ahap_euro phap_euro
+		rename ahap_pred ahap 
+		rename phap_pred phap
+		rename ahap_euro_pred ahap_euro
+		rename phap_euro_pred phap_euro
+	
+	*** KEEP 2017 ***
+		
+		keep if year==2017
+		
+	*** RENAME CAUSES ***
+	
+		replace cause_name="Alzheimer's" if strpos(cause_name, "dementias")
+		replace cause_name="Parkinson's" if strpos(cause_name, "Parkinson's")
+		replace cause_name="Anxiety" if strpos(cause_name, "Anxiety")
+		replace cause_name="Depression" if strpos(cause_name, "Major")
+		
+	/*************************************
+		INDIVIDUAL COEFFICIENTS 
+	************************************/
+	
+		bysort cause_id: egen coef=max(ahap-phap)
+		sort year cause_name location_name age_name metric_name
+		
+		gen poscoef=-coef
+		graph bar (mean) ahap_euro poscoef if year==2017, over(cause_name, sort(1) des) over(year, sort(1) des) ylab(0 1 2 3 4 5 6 7 8 9 10) stack asyvars 
+
+	*** REPLACE PARKINSONS 50 - 55 ***
+		
+		sort metric_id year cause_name location_name age_name metric_name		
+		gen ahap_eurofill=((ahap_euro[_n-1]) + (ahap_euro[_n+1]))/2 if cause_id==544 & age_id==15 & year==2017
+		replace ahap_euro=ahap_eurofill if cause_id==544 & age_id==15 & year==2017
+		drop ahap_eurofill
+		replace phap_euro=ahap_euro-coef if cause_id==544 & age_id==15 & year==2017
+		
+	/*************************************
+		INDIVIDUAL WALY - ONE YEAR 
+	************************************/
+
+		gen WALY_individual = 1 - ahap_euro/phap_euro
+		graph bar (mean) WALY_individual if year==2017, over(cause_name, sort(WALY_individual) des lab(alternate)) over(year) asyvars 
+		asdoc tabstat WALY_individual if year==2017 & age_id>15 & age_id<., by(cause_name) stats(mean) replace
+	
+		
+	/*************************************
+		POPULATION WALY - ONE YEAR 
+	************************************/
+
+		gen WALY_population = (WALY_individual * val_prev) + (val_death)
+		bysort metric_id year cause_id age_id: egen WALY_population_age=sum(WALY_population)
+		bysort metric_id year cause_id: egen WALY_population_total=sum(WALY_population)
+		sort metric_id year cause_name location_name age_name metric_name
+
+		graph bar (mean) WALY_population_total if metric_id==1 & year==2017, over(cause_name, sort(WALY_population_total) des lab(alternate)) over(year) asyvars 			
+		graph bar (mean) WALY_population_total if metric_id==3 & year==2017, over(cause_name, sort(WALY_population_total) des lab(alternate)) over(year) asyvars 			
+	
+		asdoc tabstat WALY_population_total if year==2017 & metric_id==1, by(cause_name) stats(mean) 
+					
+		graph bar (mean) WALY_population_age if year==2017 & metric_id==1, over(cause_name, sort(cause_name) des lab(alternate)) over(age_name, lab(alternate))  over(year) stack asyvars 	
+		graph bar (mean) WALY_population_age if year==2017 & metric_id==3, over(cause_name, sort(cause_name) des lab(alternate)) over(age_name, lab(alternate))  over(year) stack asyvars 	
+	
+	
+	*** SYMPTOMS ***
+	
+		foreach v of var sw_* {
+			bysort cause_id: egen test`v'=max(`v')
+			replace `v'=test`v'
+			drop test`v'
+			}
+			
+		foreach v of var h_s* {
+			bysort year: egen euro`v'=mean(`v')
+			}	
+			
+		foreach v of var s_* treat_s* {
+			bysort year cause_id: egen euro`v'=mean(`v')
+			}
+			
+		asdoc tabstat h_s* if year==2017 & metric_id==1, stats(mean)  replace
+		asdoc tabstat s_* if year==2017 & metric_id==1, by(cause_name) stats(mean) 
+		asdoc tabstat treat_s* if year==2017 & metric_id==1, by(cause_name) stats(mean) 
+			
+		graph bar (mean) eurotreat* if metric_id==1 & year<2018 & cause_id!=515, over(cause_name, sort(#, des) des lab(alternate) ) over(year) asyvars			
+		graph bar (mean) sw_* if metric_id==1 & year<2018 & cause_id!=515, over(cause_name, sort(#, des) des lab(alternate) ) over(year) asyvars			
+	
+		drop s_feelslonely1 s_feelslonely2 s_hope s_sadordepressed s_limitedinactivities1 s_limitedinactivities2 s_fatigue s_enjoyment
+		sort metric_id year cause_name location_name age_name metric_name
+	
+		/*************************************
+					INDIVIDUAL WALY
+		************************************/	
+		
+		* potential happiness
+		foreach v of var sw_*{
+			bysort metric_id year cause_id: gen phap_`v'=ahap_euro+`v'
+			} 
+		sort metric_id year cause_name location_name age_name metric_name
+
+		* individual WALY
+		gen WALY_i_lonely1 = 1 - (ahap_euro / phap_sw_feelslonely1)
+		gen WALY_i_lonely2 = 1 - (ahap_euro / phap_sw_feelslonely2)
+		gen WALY_i_hope = 1 - (ahap_euro / phap_sw_hope)
+		gen WALY_i_sadordepressed = 1 - (ahap_euro / phap_sw_sadordepressed)
+		gen WALY_i_limitedinactivities1 = 1 - (ahap_euro / phap_sw_limitedinactivities1)
+		gen WALY_i_limitedinactivities2 = 1 - (ahap_euro / phap_sw_limitedinactivities2)
+		gen WALY_i_fatigue = 1 - (ahap_euro / phap_sw_fatigue)
+		gen WALY_i_enjoyment = 1 - (ahap_euro / phap_sw_enjoyment)
+		
+		graph bar (mean) WALY_i_*if metric_id==1 & year<2018 & cause_id!=515, over(cause_name, sort(1) des) over(year, sort(1) des) asyvars			
+			
+		/*************************************
+					INDIVIDUAL WALY
+		************************************/	
+		
+		rename eurotreat_s* e_t_s*
+		
+		* symptom prevelance by actual prevelance
+		foreach v of var e_t_s* {
+			gen sprev_`v'= val_prev * `v'
+			}
+			
+		graph bar (mean) val_prev if metric_id==1 & year<2018 & cause_id!=515, over(cause_name, sort(#, des) des lab(alternate) ) over(age_name) over(year) stack asyvars						
+		graph bar (mean) sprev_* if metric_id==1 & year<2018 & cause_id!=515, over(cause_name, sort(#) des lab(alternate) ) over(year) asyvars			
+		
+		* population WALYs by country and age
+		gen WALY_p_lonely1 = WALY_i_lonely1 * sprev_e_t_s_feelslonely1
+		gen WALY_p_lonely2 = WALY_i_lonely2 * sprev_e_t_s_feelslonely2
+		gen WALY_p_hope = WALY_i_hope * sprev_e_t_s_hope
+		gen WALY_p_sadordepressed = WALY_i_sadordepressed * sprev_e_t_s_sadordepressed
+		gen WALY_p_limitedinactivities1 = WALY_i_limitedinactivities1 * sprev_e_t_s_limitedinactivities1
+		gen WALY_p_limitedinactivities2 = WALY_i_limitedinactivities2 * sprev_e_t_s_limitedinactivities2
+		gen WALY_p_fatigue = WALY_i_fatigue * sprev_e_t_s_fatigue
+		gen WALY_p_enjoyment = WALY_i_enjoyment * sprev_e_t_s_enjoyment
+			
+		* population WALYs by cause
+		foreach v of var WALY_p_lonely1 WALY_p_lonely2 WALY_p_hope WALY_p_sadordepressed WALY_p_limitedinactivities1 WALY_p_limitedinactivities2 WALY_p_fatigue WALY_p_enjoyment {
+			bysort metric_id year cause_id: egen `v'total=sum(`v')
+			}		
+		bysort metric_id year cause_id: gen WALY_p_lonely1TOTAL = WALY_p_lonely1total + WALY_p_lonely2total
+		bysort metric_id year cause_id: gen WALY_p_limitedinactivitiesTOTAL = WALY_p_limitedinactivities1total + WALY_p_limitedinactivities2total
+		
+		graph bar (mean) WALY_p_lonely1TOTAL WALY_p_hopetotal WALY_p_sadordepressedtotal WALY_p_limitedinactivitiesTOTAL WALY_p_fatiguetotal WALY_p_enjoymenttotal if metric_id==1 & year<2018 & cause_id!=515, over(cause_name, sort(1) des) over(year, sort(1) des) asyvars
+		graph bar (mean) WALY_population_total WALY_p_lonely1TOTAL WALY_p_hopetotal WALY_p_sadordepressedtotal WALY_p_limitedinactivitiesTOTAL WALY_p_fatiguetotal WALY_p_enjoymenttotal if metric_id==1 & year<2018 & cause_id!=515, over(cause_name, sort(1) des) over(year, sort(1) des) asyvars			
+			
+			
+	/* 
+	
+		bysort metric_id year cause_id: gen WALY_population_total2=((WALY_individual * val_prev) + (val_YLL))
+		
+		* DALYs
+		
+		gen DALY_individual = val_YLD + val_YLL
+		bysort metric_id year cause_id: egen DALY_population1=sum(DALY_individual)
+		bysort metric_id year cause_id: egen DALY_population2=sum(val_YLD + val_death)
+		sort metric_id year cause_name location_name age_name metric_name
+			
+			* double check
+			gen dweight=0.399 if cause_id==568
+			replace dweight=0.338 if cause_id==627
+			replace dweight=0.298 if cause_id==543
+			replace dweight=0.284 if cause_id==544
+			replace dweight=0.229 if cause_id==571
+			replace dweight=0.134 if cause_id==671
+			replace dweight=0.089 if cause_id==628
+		
+		bysort metric_id year cause_id: egen DALY_population3=sum((val_prev * dweight) + val_death)
+		bysort metric_id year cause_id: egen DALY_population4=sum((val_inc*(val_prev/val_inc) * dweight) + val_death)
+		
+		asdoc tabstat DALY_population1 if year==2017 & metric_id==1, by(cause_name) sort(DALY_population) stats(mean)
+		asdoc tabstat DALY_population2 if year==2017 & metric_id==1, by(cause_name) sort(DALY_population) stats(mean)
+		asdoc tabstat DALY_population3 if year==2017 & metric_id==1, by(cause_name) sort(DALY_population) stats(mean)
+		asdoc tabstat DALY_population4 if year==2017 & metric_id==1, by(cause_name) sort(DALY_population) stats(mean)
+		asdoc tabstat WALY_population_total2 if year==2017 & metric_id==1, by(cause_name) sort(DALY_population) stats(mean)
+
+		
+	/*** FUTURE SCENARIOS ***
+	
+		append using "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/WPP2019_POP_F15_1_ANNUAL_POPULATION_BY_AGE_BOTH_SEXES2.dta"
+		replace age_name = "40 to 44" if age_id==13
+		replace age_name = "45 to 49" if age_id==14
+		replace age_name = "50 to 54" if age_id==15
+		replace age_name = "55 to 59" if age_id==16
+		replace age_name = "60 to 64" if age_id==17
+		replace age_name = "65 to 69" if age_id==18
+		replace age_name = "70 to 74" if age_id==19
+		replace age_name = "75 to 79" if age_id==20
+		replace age_name = "80 to 84" if age_id==30
+		replace age_name = "85 to 89" if age_id==31
+		replace age_name = "90 to 94" if age_id==32
+		
+		replace cause_name="Alzeimers" if cause_id==543
+		replace cause_name="Anxiety disorders" if cause_id==571  
+		replace cause_name="Asthma" if cause_id==515
+		replace cause_name="Cataract" if cause_id==671
+		replace cause_name="Major" if cause_id==568
+		replace cause_name="Osteoarthritis" if cause_id==628
+		replace cause_name="Parkinson's disease" if cause_id==544
+		replace cause_name="Rheumatoid arthritis" if cause_id==627
+
+		foreach v of var val_prev val_inc val_death ahap phap ahap_pred phap_pred ahap_euro phap_euro ahap_euro_pred phap_euro_pred {
+			bysort location_id age_id cause_id: egen test1`v'=max(`v') if metric_id==3 & year>2016
+			replace `v'=test1`v' if `v'==. & metric_id==3 & year>2016
+			drop test1`v'
+			}
+		
+		sort year metric_id year cause_name location_name age_name metric_name
+		
+		replace population=population/100000 if year>2017
+		replace val_prev=population*val_prev if year>2017
+		replace val_inc=population*val_inc if year>2017
+		replace val_death=population*val_death if year>2017
+		replace metric_id=1 if year>2017
+
+		* FUTURE 				
+		bysort cause_id location_id age_id: egen ahap_all=mean(ahap_euro)
+		bysort cause_id location_id age_id: egen phap_all=mean(phap_euro)
+		replace WALY_individual = 1 - ahap_all/phap_all
+		replace WALY_population = (WALY_individual * val_prev) + (val_death)
+		
+		graph bar (mean) WALY_population_total if metric_id==1 & year>2017, over(cause_name, sort(cause_name) des lab(alternate)) over(year, lab(angle(forty_five))) stack asyvars 			
+		
+		* BY COUNTRY
+		replace WALY_individual = 1 - ahap/phap
+		replace WALY_population = (WALY_individual * val_prev) + (val_death)
+		bysort metric_id year location_id cause_id age_id: egen WALY_population_country=sum(WALY_population)
+		graph bar (mean) WALY_population_country if year==2017 & metric_id==3 & cause_name!="Depression", over(cause_name, sort(cause_name) lab(alternate)) over(location_name, sort(WALY_population_country) lab(angle(forty_five)))  over(year) stack asyvars 	
+		
+
+		
+		
+		
+/*		
+		
+	/*************************************
+		INDIVIDUAL WALY - LIFETIME 
+	************************************/
+	
+		* assuming constant happiness
+		gen WALY_i_l_constant = (WALY_i_y_cause * ex_sick_avg) + (ex_healthy_avg - ex_sick_avg)
+		bysort year cause_id: egen WALY_i_l_constant_cause=sum(WALY_i_l_constant)
+		sort cause_name location_name age_name metric_name
+			
+	/*************************************
+		POPULATION WALY - LIFETIME 
+	************************************/
+		
+		gen WALY_p_l_constant = WALY_i_l_constant * val_prev
+		bysort year cause_id: egen WALY_p_l_constant_cause=sum(WALY_p_l_constant)
+		sort year cause_name location_name age_name metric_name
+			
+		
+	* allowing happiness to change by age
+
+			* young
+			gen WALY_i_l_nonconstant1 = WALY_i_y*5 if (ex_sick_avg>5 & ex_sick_avg<.)
+				replace WALY_i_l_nonconstant1 = WALY_i_y*ex_sick_avg if (ex_sick_avg<5)
+
+			gen WALY_i_l_nonconstant2 = WALY_i_y[_n+1]*5 if (ex_sick_avg>10 & ex_sick_avg<.)
+				replace WALY_i_l_nonconstant2 = WALY_i_y[_n+1]*(ex_sick_avg-5) if (ex_sick_avg>5 & ex_sick_avg<10) 
+			
+			gen WALY_i_l_nonconstant3 = WALY_i_y[_n+2]*5 if (ex_sick_avg>15 & ex_sick_avg<.)
+				replace WALY_i_l_nonconstant3 = WALY_i_y[_n+2]*(ex_sick_avg-10) if (ex_sick_avg>10 & ex_sick_avg<15) 
+			
+			gen WALY_i_l_nonconstant4 = WALY_i_y[_n+3]*5 if (ex_sick_avg>20 & ex_sick_avg<.)
+				replace WALY_i_l_nonconstant4 = WALY_i_y[_n+3]*(ex_sick_avg-15) if (ex_sick_avg>15 & ex_sick_avg<20) 
+				
+			gen WALY_i_l_nonconstant5 = WALY_i_y[_n+4]*5 if (ex_sick_avg>25 & ex_sick_avg<.)
+				replace WALY_i_l_nonconstant4 = WALY_i_y[_n+3]*(ex_sick_avg-15) if (ex_sick_avg>15 & ex_sick_avg<20) 
+			
+			egen test1 = rowtotal(WALY_i_l_nonconstant1 WALY_i_l_nonconstant2 WALY_i_l_nonconstant3 WALY_i_l_nonconstant4 WALY_i_l_nonconstant5) if age_id<.
+			gen WALY_i_l_change_young = test1 + (ex_healthy_avg - ex_sick_avg)
+			drop test1 WALY_i_l_nonconstant1 WALY_i_l_nonconstant2 WALY_i_l_nonconstant3 WALY_i_l_nonconstant4 WALY_i_l_nonconstant5
+		
+			* old
+			gen WALY_i_l_nonconstant1 = (WALY_i_y*ex_sick_avg) if age_id==32
+			
+			gen WALY_i_l_nonconstant2 = (WALY_i_y) + (WALY_i_y[_n+1] * (ex_sick_avg-1)) if age_id==31
+					
+			gen WALY_i_l_nonconstant3 = (WALY_i_y) + (WALY_i_y[_n+1] * 5) + (WALY_i_y[_n+2] * (ex_sick_avg - 6)) if age_id==30
+			
+			gen WALY_i_l_nonconstant4 = (WALY_i_y) + (WALY_i_y[_n+1] * 5) + (WALY_i_y[_n+2] * (ex_sick_avg - 6)) if age_id==20 & ex_sick_avg<11
+			replace WALY_i_l_nonconstant4 = (WALY_i_y) + (WALY_i_y[_n+1] * 5) + (WALY_i_y[_n+2] * 5) + (WALY_i_y[_n+3] * (ex_sick_avg - 11)) if (age_id==20 & ex_sick_avg>11 & ex_sick_avg<16 & ex_sick_avg<.)
+			
+			gen WALY_i_l_nonconstant5 = (WALY_i_y) + (WALY_i_y[_n+1] * 5) + (WALY_i_y[_n+2] * (ex_sick_avg - 6)) if age_id==19 & ex_sick_avg<11
+			replace WALY_i_l_nonconstant5 = (WALY_i_y) + (WALY_i_y[_n+1] * 5) + (WALY_i_y[_n+2] * 5) + (WALY_i_y[_n+3] * (ex_sick_avg - 11)) if (age_id==19 & ex_sick_avg>11 & ex_sick_avg<16 & ex_sick_avg<.)
+			
+			gen WALY_i_l_nonconstant6 = (WALY_i_y) + (WALY_i_y[_n+1] * 5) + (WALY_i_y[_n+2] * 5) + (WALY_i_y[_n+3] * (ex_sick_avg - 11)) if age_id==18 & ex_sick_avg<16
+			replace WALY_i_l_nonconstant6 = (WALY_i_y) + (WALY_i_y[_n+1] * 5) + (WALY_i_y[_n+2] * 5) + (WALY_i_y[_n+3] * 5) + (WALY_i_y[_n+4] * (ex_sick_avg - 16)) if (age_id==18 & ex_sick_avg>16 & ex_sick_avg<21 & ex_sick_avg<.)
+			
+			gen WALY_i_l_nonconstant7 = (WALY_i_y) + (WALY_i_y[_n+1] * 5) + (WALY_i_y[_n+2] * 5) + (WALY_i_y[_n+3] * 5) + (WALY_i_y[_n+4] * (ex_sick_avg - 16)) if age_id==17 & ex_sick_avg<21 
+			replace WALY_i_l_nonconstant7 = (WALY_i_y) + (WALY_i_y[_n+1] * 5) + (WALY_i_y[_n+2] * 5) + (WALY_i_y[_n+3] * 5) + (WALY_i_y[_n+4] * 5) + (WALY_i_y[_n+5] * (ex_sick_avg - 21)) if (age_id==17 & ex_sick_avg>21 & ex_sick_avg<26 & ex_sick_avg<.)
+			
+			gen WALY_i_l_nonconstant8 = (WALY_i_y) + (WALY_i_y[_n+1] * 5) + (WALY_i_y[_n+2] * 5) + (WALY_i_y[_n+3] * 5) + (WALY_i_y[_n+4] * (ex_sick_avg - 16)) if age_id==16 & ex_sick_avg<21 
+			replace WALY_i_l_nonconstant8 = (WALY_i_y) + (WALY_i_y[_n+1] * 5) + (WALY_i_y[_n+2] * 5) + (WALY_i_y[_n+3] * 5) + (WALY_i_y[_n+4] * 5) + (WALY_i_y[_n+5] * (ex_sick_avg - 21)) if (age_id==16 & ex_sick_avg>21 & ex_sick_avg<26 & ex_sick_avg<.)
+			replace WALY_i_l_nonconstant8 = (WALY_i_y) + (WALY_i_y[_n+1] * 5) + (WALY_i_y[_n+2] * 5) + (WALY_i_y[_n+3] * 5) + (WALY_i_y[_n+4] * 5) + (WALY_i_y[_n+5] * 5) + (WALY_i_y[_n+6] * (ex_sick_avg - 26)) if (age_id==16 & ex_sick_avg>26 & ex_sick_avg<31 & ex_sick_avg<.)
+			
+			egen test1 = rowtotal(WALY_i_l_nonconstant1 WALY_i_l_nonconstant2 WALY_i_l_nonconstant3 WALY_i_l_nonconstant4 WALY_i_l_nonconstant5 WALY_i_l_nonconstant6 WALY_i_l_nonconstant7 WALY_i_l_nonconstant8) if age_id<.
+			gen WALY_i_l_change_old = test1 + (ex_healthy_avg - ex_sick_avg)
+			drop test1 WALY_i_l_nonconstant1 WALY_i_l_nonconstant2 WALY_i_l_nonconstant3 WALY_i_l_nonconstant4 WALY_i_l_nonconstant5 WALY_i_l_nonconstant6 WALY_i_l_nonconstant7 WALY_i_l_nonconstant8
+		
+			* average
+			gen WALY_i_l_change = (WALY_i_l_change_young+WALY_i_l_change_old)/2
+			order id year location_id location_name sex_id sex_name age_id age_name cause_id cause_name metric_id metric_name val_inc val_prev val_death val_death_total val_YLL population death mrate mrate_notcause mrate_within ex_sick ex_healthy lifeexpectancy ex_sick_avg ex_healthy_avg lifeexpectancy_avg mrate_cause mrate_cause_x5 mrate_cause_40 mrate_cause_45 mrate_cause_50 mrate_cause_55 mrate_cause_60 mrate_cause_65 mrate_cause_70 mrate_cause_75 mrate_cause_80 mrate_cause_85 mrate_cause_90 mrate_cause_avg mrate_cause_avg_x5 mrate_cause_avg40 mrate_cause_avg45 mrate_cause_avg50 mrate_cause_avg55 mrate_cause_avg60 mrate_cause_avg65 mrate_cause_avg70 mrate_cause_avg75 mrate_cause_avg80 mrate_cause_avg85 mrate_cause_avg90 ahap ahap_euro phap phap_euro coef WALY_i_y WALY_i_y_cause WALY_p_y WALY_p_y_cause WALY_i_l_constant WALY_i_l_change WALY_i_l_change_young WALY_i_l_change_old
+			
+			*/ 
+			
+		asdoc tabstat WALY_i_y_cause, by(cause_name) statistics(mean) title(Individual WALYs lost in 2017) 
+		asdoc tabstat WALY_p_y_cause, by(cause_name) statistics(mean) title(Population WALYs lost in 2017) 
+		asdoc tabstat WALY_i_l_constant_cause, by(cause_name) statistics(mean) title(Individual WALYs lost over the lifetime) 
+		asdoc tabstat WALY_p_l_constant_cause, by(cause_name) statistics(mean) title(Population WALYs lost over the lifetime) 
+		
+		
+		
+		
+		
+/*		
+		
+		
+	/*************************************
+		    WALYs PERFECT HAPPINESS 
+	************************************/
+		
+		gen WALY_individual = 1 - (patient_ls_impute / 10)
+		gen WALY_sum = WALY_individual * val
+		gen WALY_death = val_death
+		gen WALY_total = WALY_sum + WALY_death
+		
+		bysort age_id: egen WALY_age = sum(WALY_total)
+		bysort sex_id: egen WALY_sex = sum(WALY_total)
+		bysort location_id: egen WALY_country = sum(WALY_total)
+		bysort cause_id: egen WALY_cause = sum(WALY_total)
+
+		egen WALY_overall = sum(WALY_total)
+		
+		sort WALY_cause cause_id location_id sex_id age_id
+
+		asdoc tabstat WALY_individual, by(cause_name) statistics(mean) title(Individual WALYs lost) 
+		asdoc tabstat WALY_cause, by(cause_name) statistics(mean) title(Total WALYs lost)  
+		asdoc tabstat WALY_country, by(location_name) statistics(mean) title(WALYs lost per country)
+		asdoc tabstat WALY_age, by(age_name) statistics(mean) title(WALYs lost by age)
+		asdoc tabstat WALY_sex, by(sex_name) statistics(mean) title(WALYs lost by gender)
+	
+	/*************************************
+		    WALYs AVERAGE HAPPINESS 
+	*************************************/
+		
+		drop WALY_individual WALY_sum WALY_death WALY_total WALY_age WALY_sex WALY_country WALY_cause WALY_overall
+		
+		gen WALY_individual = 1 - (patient_ls_impute / average_ls_impute)
+		gen WALY_sum = WALY_individual * val
+		gen WALY_death = val_death
+		gen WALY_total = WALY_sum + WALY_death
+		
+		bysort age_id: egen WALY_age = sum(WALY_total)
+		bysort sex_id: egen WALY_sex = sum(WALY_total)
+		bysort location_id: egen WALY_country = sum(WALY_total)
+		bysort cause_id: egen WALY_cause = sum(WALY_total)
+
+		egen WALY_overall = sum(WALY_total)
+		
+		sort WALY_cause cause_id location_id sex_id age_id
+
+		asdoc tabstat WALY_individual, by(cause_name) statistics(mean) title(Individual WALYs lost) 
+		asdoc tabstat WALY_cause, by(cause_name) statistics(mean) title(Total WALYs lost)  
+		asdoc tabstat WALY_country, by(location_name) statistics(mean) title(WALYs lost per country)
+		asdoc tabstat WALY_age, by(age_name) statistics(mean) title(WALYs lost by age)
+		asdoc tabstat WALY_sex, by(sex_name) statistics(mean) title(WALYs lost by gender)
+	
+	/*************************************
+	    WALYs ACTUAL WITH TREATMENT OLS 
+	************************************/
+		
+		drop WALY_individual WALY_sum WALY_death WALY_total WALY_age WALY_sex WALY_country WALY_cause WALY_overall
+		
+		gen WALY_individual = 1 - (patient_ls_impute / patient_control_ls_impute)
+		gen WALY_sum = WALY_individual * val
+		gen WALY_death = val_death
+		gen WALY_total = WALY_sum + WALY_death
+		
+		bysort age_id: egen WALY_age = sum(WALY_total)
+		bysort sex_id: egen WALY_sex = sum(WALY_total)
+		bysort location_id: egen WALY_country = sum(WALY_total)
+		bysort cause_id: egen WALY_cause = sum(WALY_total)
+
+		egen WALY_overall = sum(WALY_total)
+		
+		sort WALY_cause cause_id location_id sex_id age_id
+
+		asdoc tabstat WALY_individual, by(cause_name) statistics(mean) title(Individual WALYs lost) 
+		asdoc tabstat WALY_cause, by(cause_name) statistics(mean) title(Total WALYs lost)  
+		asdoc tabstat WALY_country, by(location_name) statistics(mean) title(WALYs lost per country)
+		asdoc tabstat WALY_age, by(age_name) statistics(mean) title(WALYs lost by age)
+		asdoc tabstat WALY_sex, by(sex_name) statistics(mean) title(WALYs lost by gender)
+		
+	/*************************************
+	    WALYs CONTROL AND TREATMENT OLS 
+	************************************/
+	
+		drop WALY_individual WALY_sum WALY_death WALY_total WALY_age WALY_sex WALY_country WALY_cause WALY_overall
+		
+		gen WALY_individual = 1 - (patient_treat_ls_impute / patient_control_ls_impute)
+		gen WALY_sum = WALY_individual * val
+		gen WALY_death = val_death
+		gen WALY_total = WALY_sum + WALY_death
+		
+		bysort age_id: egen WALY_age = sum(WALY_total)
+		bysort sex_id: egen WALY_sex = sum(WALY_total)
+		bysort location_id: egen WALY_country = sum(WALY_total)
+		bysort cause_id: egen WALY_cause = sum(WALY_total)
+
+		egen WALY_overall = sum(WALY_total)
+		
+		sort WALY_cause cause_id location_id sex_id age_id
+
+		asdoc tabstat WALY_individual, by(cause_name) statistics(mean) title(Individual WALYs lost) 
+		asdoc tabstat WALY_cause, by(cause_name) statistics(mean) title(Total WALYs lost)  
+		asdoc tabstat WALY_country, by(location_name) statistics(mean) title(WALYs lost per country)
+		asdoc tabstat WALY_age, by(age_name) statistics(mean) title(WALYs lost by age)
+		asdoc tabstat WALY_sex, by(sex_name) statistics(mean) title(WALYs lost by gender)
+			
+	save "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/Global-Burden-Disease-Data-WALY.dta", replace		
+			
+
+
+/************************************************************
+
+		PREPARE MERGE WITH GLOBAL BURDEN OF DISEASE DATA
+		  
+************************************************************/
+
+clear
+use "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVES1-2-3-4-5-6-7.dta"
+
+/************************************************************
+
+						REGRESSIONS
+		  
+************************************************************/
+
+
+	clear
+	set more off
+	use "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVES1-2-3-4-5-6-7.dta", clear
+	
+	* SCALED LIFE SATISFACTION
+	
+	foreach v of var lifesat  { 
+		su `v', meanonly 
+		gen `v'scale = (`v' - r(min))/(r(max) - r(min)) 
+		}
+	label var lifesatscale "0-1 scaled lifesatisfaction"	
+	
+	* CONTROL VARIABLES
+	
+		global xlist i.areabldgi i.agecat gender i.mstat i.nchildren logincome logworth i.isced i.cjs i.country i.year
+	
+	* HAPPINESS BURDEN OF DISEASE
+		
+		eststo v1: reg lifesat alzeimers $xlist, cluster(mergeid2)
+		eststo v2: reg lifesat anxiety $xlist, cluster(mergeid2)
+		eststo v3: reg lifesat asthma $xlist, cluster(mergeid2)
+		eststo v4: reg lifesat cataracts $xlist, cluster(mergeid2)
+		eststo v5: reg lifesat depression $xlist, cluster(mergeid2)
+		eststo v6: reg lifesat osteoarthritis $xlist, cluster(mergeid2)
+		eststo v7: reg lifesat parkinsons $xlist, cluster(mergeid2)
+		eststo v8: reg lifesat rheumatoid_arthritis $xlist, cluster(mergeid2)
+		
+		coefplot ///
+			(v1) (v2) (v3) (v4) (v5) (v6) (v7) (v8), ///
+			keep(alzeimers anxiety asthma cataracts depression osteoarthritis parkinsons rheumatoid_arthritis) vertical ///
+			sort ///
+			legend(off) ///
+			recast(bar) barwidth(0.5) ///
+			citop ///
+			ciopts(recast(rcap)) ///
+			ylab(0 -.25 -.5 -.75 -1 -1.25 -1.5) ///
+			title("Happiness burden of disease (individual)", margin(b=4))
+		
+	
+	* ALZEIMERS
+	
+		eststo v2: reg lifesatscale alzeimers $xlist if agecat==50, cluster(mergeid2)
+		eststo v3: reg lifesatscale alzeimers $xlist if agecat==55, cluster(mergeid2)
+		eststo v4: reg lifesatscale alzeimers $xlist if agecat==60, cluster(mergeid2)
+		eststo v5: reg lifesatscale alzeimers $xlist if agecat==65, cluster(mergeid2)
+		eststo v6: reg lifesatscale alzeimers $xlist if agecat==70 , cluster(mergeid2)
+		eststo v7: reg lifesatscale alzeimers $xlist if agecat==75 , cluster(mergeid2)
+		eststo v8: reg lifesatscale alzeimers $xlist if agecat==80 , cluster(mergeid2)
+		eststo v9: reg lifesatscale alzeimers $xlist if agecat==85, cluster(mergeid2)
+		eststo v10: reg lifesatscale alzeimers $xlist if agecat==90, cluster(mergeid2)
+		
+		coefplot ///
+			(v2) || (v3) || (v4) || (v5) || (v6) || (v7) || (v8) || (v9) || , ///
+			bycoefs ///
+			keep(alzeimers) vertical ///
+			legend(off) ///
+			ciopts(recast(rcap)) ///
+			ylab(0 -.025 -.05 -.075 -.1 -.125 -.15) ///
+			bylabels("50-54" "55-59" "60-64" "65-69" "70-74" "75-79" "80-84" "85-89" "90-95") ///
+			title("Alzeimers", margin(b=4))
+			
+
+	* ANXIETY
+	
+		eststo v2: reg lifesatscale anxiety $xlist if agecat==50, cluster(mergeid2)
+		eststo v3: reg lifesatscale anxiety $xlist if agecat==55, cluster(mergeid2)
+		eststo v4: reg lifesatscale anxiety $xlist if agecat==60, cluster(mergeid2)
+		eststo v5: reg lifesatscale anxiety $xlist if agecat==65, cluster(mergeid2)
+		eststo v6: reg lifesatscale anxiety $xlist if agecat==70 , cluster(mergeid2)
+		eststo v7: reg lifesatscale anxiety $xlist if agecat==75 , cluster(mergeid2)
+		eststo v8: reg lifesatscale anxiety $xlist if agecat==80 , cluster(mergeid2)
+		eststo v9: reg lifesatscale anxiety $xlist if agecat==85, cluster(mergeid2)
+		eststo v10: reg lifesatscale anxiety $xlist if agecat==90, cluster(mergeid2)
+		
+		coefplot ///
+			(v2) || (v3) || (v4) || (v5) || (v6) || (v7) || (v8) || (v9) || , ///
+			bycoefs ///
+			keep(anxiety) vertical ///
+			legend(off) ///
+			ciopts(recast(rcap)) ///
+			ylab(0 -.025 -.05 -.075 -.1 -.125 -.15) ///
+			bylabels("50-54" "55-59" "60-64" "65-69" "70-74" "75-79" "80-84" "85-89" "90-95") ///
+			title("Anxiety", margin(b=4))
+			
+	* ASTHMA
+	
+		eststo v2: reg lifesatscale asthma $xlist if agecat==50, cluster(mergeid2)
+		eststo v3: reg lifesatscale asthma $xlist if agecat==55, cluster(mergeid2)
+		eststo v4: reg lifesatscale asthma $xlist if agecat==60, cluster(mergeid2)
+		eststo v5: reg lifesatscale asthma $xlist if agecat==65, cluster(mergeid2)
+		eststo v6: reg lifesatscale asthma $xlist if agecat==70 , cluster(mergeid2)
+		eststo v7: reg lifesatscale asthma $xlist if agecat==75 , cluster(mergeid2)
+		eststo v8: reg lifesatscale asthma $xlist if agecat==80 , cluster(mergeid2)
+		eststo v9: reg lifesatscale asthma $xlist if agecat==85, cluster(mergeid2)
+		eststo v10: reg lifesatscale asthma $xlist if agecat==90, cluster(mergeid2)
+		
+		coefplot ///
+			(v2) || (v3) || (v4) || (v5) || (v6) || (v7) || (v8) || (v9) ||, ///
+			bycoefs ///
+			keep(asthma) vertical ///
+			legend(off) ///
+			ciopts(recast(rcap)) ///
+			ylab(0.025 " " 0 -.025 -.05 -.075 -.1 -.125 -.15) ///
+			bylabels("50-54" "55-59" "60-64" "65-69" "70-74" "75-79" "80-84" "85-89" "90-95") ///
+			title("Asthma", margin(b=4)) ///
+			yscale (r(-.15) noextend)
+			
+	* CATARACTS
+	
+		eststo v2: reg lifesatscale cataracts $xlist if agecat==50, cluster(mergeid2)
+		eststo v3: reg lifesatscale cataracts $xlist if agecat==55, cluster(mergeid2)
+		eststo v4: reg lifesatscale cataracts $xlist if agecat==60, cluster(mergeid2)
+		eststo v5: reg lifesatscale cataracts $xlist if agecat==65, cluster(mergeid2)
+		eststo v6: reg lifesatscale cataracts $xlist if agecat==70 , cluster(mergeid2)
+		eststo v7: reg lifesatscale cataracts $xlist if agecat==75 , cluster(mergeid2)
+		eststo v8: reg lifesatscale cataracts $xlist if agecat==80 , cluster(mergeid2)
+		eststo v9: reg lifesatscale cataracts $xlist if agecat==85, cluster(mergeid2)
+		eststo v10: reg lifesatscale cataracts $xlist if agecat==90, cluster(mergeid2)
+		
+		coefplot ///
+			(v2) || (v3) || (v4) || (v5) || (v6) || (v7) || (v8) || (v9) || , ///
+			bycoefs ///
+			keep(cataracts) vertical ///
+			legend(off) ///
+			ciopts(recast(rcap)) ///
+			ylab(0 -.025 -.05 -.075 -.1 -.125 -.15) ///
+			bylabels("50-54" "55-59" "60-64" "65-69" "70-74" "75-79" "80-84" "85-89" "90-95") ///
+			title("Cataracts", margin(b=4))
+			
+	* DEPRESSION
+	
+		eststo v2: reg lifesatscale depression $xlist if agecat==50, cluster(mergeid2)
+		eststo v3: reg lifesatscale depression $xlist if agecat==55, cluster(mergeid2)
+		eststo v4: reg lifesatscale depression $xlist if agecat==60, cluster(mergeid2)
+		eststo v5: reg lifesatscale depression $xlist if agecat==65, cluster(mergeid2)
+		eststo v6: reg lifesatscale depression $xlist if agecat==70 , cluster(mergeid2)
+		eststo v7: reg lifesatscale depression $xlist if agecat==75 , cluster(mergeid2)
+		eststo v8: reg lifesatscale depression $xlist if agecat==80 , cluster(mergeid2)
+		eststo v9: reg lifesatscale depression $xlist if agecat==85, cluster(mergeid2)
+		eststo v10: reg lifesatscale depression $xlist if agecat==90, cluster(mergeid2)
+		
+		coefplot ///
+			(v2) || (v3) || (v4) || (v5) || (v6) || (v7) || (v8) || (v9) || , ///
+			bycoefs ///
+			keep(depression) vertical ///
+			legend(off) ///
+			ciopts(recast(rcap)) ///
+			ylab(0 -.025 -.05 -.075 -.1 -.125 -.15) ///
+			bylabels("50-54" "55-59" "60-64" "65-69" "70-74" "75-79" "80-84" "85-89" "90-95") ///
+			title("Depression", margin(b=4))
+
+	* OSTEOARTHRITIS
+	
+		eststo v2: reg lifesatscale osteoarthritis $xlist if agecat==50, cluster(mergeid2)
+		eststo v3: reg lifesatscale osteoarthritis $xlist if agecat==55, cluster(mergeid2)
+		eststo v4: reg lifesatscale osteoarthritis $xlist if agecat==60, cluster(mergeid2)
+		eststo v5: reg lifesatscale osteoarthritis $xlist if agecat==65, cluster(mergeid2)
+		eststo v6: reg lifesatscale osteoarthritis $xlist if agecat==70 , cluster(mergeid2)
+		eststo v7: reg lifesatscale osteoarthritis $xlist if agecat==75 , cluster(mergeid2)
+		eststo v8: reg lifesatscale osteoarthritis $xlist if agecat==80 , cluster(mergeid2)
+		eststo v9: reg lifesatscale osteoarthritis $xlist if agecat==85, cluster(mergeid2)
+		eststo v10: reg lifesatscale osteoarthritis $xlist if agecat==90, cluster(mergeid2)
+		
+		coefplot ///
+			(v2) || (v3) || (v4) || (v5) || (v6) || (v7) || (v8) || (v9) ||, ///
+			bycoefs ///
+			keep(osteoarthritis) vertical ///
+			legend(off) ///
+			ciopts(recast(rcap)) ///
+			ylab(0 -.025 -.05 -.075 -.1 -.125 -.15) ///
+			bylabels("50-54" "55-59" "60-64" "65-69" "70-74" "75-79" "80-84" "85-89" "90-95") ///
+			title("Osteoarthritis", margin(b=4))
+
+	* PARKINSONS
+	
+		eststo v2: reg lifesatscale parkinsons $xlist if agecat==50, cluster(mergeid2)
+		eststo v3: reg lifesatscale parkinsons $xlist if agecat==55, cluster(mergeid2)
+		eststo v4: reg lifesatscale parkinsons $xlist if agecat==60, cluster(mergeid2)
+		eststo v5: reg lifesatscale parkinsons $xlist if agecat==65, cluster(mergeid2)
+		eststo v6: reg lifesatscale parkinsons $xlist if agecat==70 , cluster(mergeid2)
+		eststo v7: reg lifesatscale parkinsons $xlist if agecat==75 , cluster(mergeid2)
+		eststo v8: reg lifesatscale parkinsons $xlist if agecat==80 , cluster(mergeid2)
+		eststo v9: reg lifesatscale parkinsons $xlist if agecat==85, cluster(mergeid2)
+		eststo v10: reg lifesatscale parkinsons $xlist if agecat==90, cluster(mergeid2)
+		
+		coefplot ///
+			(v2) || (v3) || (v4) || (v5) || (v6) || (v7) || (v8) || (v9) ||, ///
+			bycoefs ///
+			keep(parkinsons) vertical ///
+			legend(off) ///
+			ciopts(recast(rcap)) ///
+			ylab(0 -.025 -.05 -.075 -.1 -.125 -.15) ///
+			bylabels("50-54" "55-59" "60-64" "65-69" "70-74" "75-79" "80-84" "85-89" "90-95") ///
+			title("Parkinsons", margin(b=4))
+
+	* RHEUMATOID ARTHRITIS
+	
+		eststo v2: reg lifesatscale rheumatoid_arthritis $xlist if agecat==50, cluster(mergeid2)
+		eststo v3: reg lifesatscale rheumatoid_arthritis $xlist if agecat==55, cluster(mergeid2)
+		eststo v4: reg lifesatscale rheumatoid_arthritis $xlist if agecat==60, cluster(mergeid2)
+		eststo v5: reg lifesatscale rheumatoid_arthritis $xlist if agecat==65, cluster(mergeid2)
+		eststo v6: reg lifesatscale rheumatoid_arthritis $xlist if agecat==70 , cluster(mergeid2)
+		eststo v7: reg lifesatscale rheumatoid_arthritis $xlist if agecat==75 , cluster(mergeid2)
+		eststo v8: reg lifesatscale rheumatoid_arthritis $xlist if agecat==80 , cluster(mergeid2)
+		eststo v9: reg lifesatscale rheumatoid_arthritis $xlist if agecat==85, cluster(mergeid2)
+		eststo v10: reg lifesatscale rheumatoid_arthritis $xlist if agecat==90, cluster(mergeid2)
+		
+		coefplot ///
+			(v2) || (v3) || (v4) || (v5) || (v6) || (v7) || (v8) || (v9) ||, ///
+			bycoefs ///
+			keep(rheumatoid_arthritis) vertical ///
+			legend(off) ///
+			ciopts(recast(rcap)) ///
+			ylab(0 -.025 -.05 -.075 -.1 -.125 -.15) ///
+			bylabels("50-54" "55-59" "60-64" "65-69" "70-74" "75-79" "80-84" "85-89" "90-95") ///
+			title("Rheumatoid arthritis", margin(b=4))
+
+			
+/* -----------------------------------------------------------
+
+				   POTENTIAL HAPPINESS GRAPHS
+							
+----------------------------------------------------------- */
+
+	clear
+	use "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/Global-Burden-Disease-Data-WALY.dta", replace
+		
+	bysort cause_name age_id: egen treat = mean(patient_ls)
+	bysort age_id: gen control1 = treat + .658 if cause_id==543
+	bysort age_id: gen control2 = treat + .957 if cause_id==571
+	bysort age_id: gen control3 = treat + .223 if cause_id==671
+	bysort age_id: gen control4 = treat + 1.14 if cause_id==568
+	bysort age_id: gen control5 = treat + .312 if cause_id==628
+	bysort age_id: gen control6 = treat + .665 if cause_id==544
+	bysort age_id: gen control7 = treat + .440 if cause_id==627
+	
+	replace age_id = 21 if age_id==30
+	replace age_id = 22 if age_id==31
+	replace age_id = 23 if age_id==32
+
+	line treat age_id || line control1 age_id || if cause_id==543, ///
+		legend(off) ///
+		ylab (4 5 6 7 8 9) ///
+		xlab(16 "55-59" 17 "60-64" 18 "65-69" 19 "70-74" 20 "75-79" 21 "80-84" 22 "85-89" 23 "90-95") ///
+		xtitle(" ") ///
+		title("Alzeimers", margin(b=4)) 
+
+	line treat age_id || line control2 age_id || if cause_id==571, ///
+		legend(off) ///
+		ylab (4 5 6 7 8 9) ///
+		xlab(16 "55-59" 17 "60-64" 18 "65-69" 19 "70-74" 20 "75-79" 21 "80-84" 22 "85-89" 23 "90-95") ///
+		xtitle(" ") ///
+		title("Anxiety", margin(b=4)) 
+
+	line treat age_id || line control3 age_id || if cause_id==671, ///
+		legend(off) ///
+		ylab (4 5 6 7 8 9) ///
+		xlab(16 "55-59" 17 "60-64" 18 "65-69" 19 "70-74" 20 "75-79" 21 "80-84" 22 "85-89" 23 "90-95") ///
+		xtitle(" ") ///
+		title("Cataracts", margin(b=4)) 
+
+	line treat age_id || line control4 age_id || if cause_id==568, ///
+		legend(off) ///
+		ylab (4 5 6 7 8 9) ///
+		xlab(16 "55-59" 17 "60-64" 18 "65-69" 19 "70-74" 20 "75-79" 21 "80-84" 22 "85-89" 23 "90-95") ///
+		xtitle(" ") ///
+		title("Depression", margin(b=4)) 
+
+	line treat age_id || line control5 age_id || if cause_id==628, ///
+		legend(off) ///
+		ylab (4 5 6 7 8 9) ///
+		xlab(16 "55-59" 17 "60-64" 18 "65-69" 19 "70-74" 20 "75-79" 21 "80-84" 22 "85-89" 23 "90-95") ///
+		xtitle(" ") ///
+		title("Osteoarthritis", margin(b=4)) 
+
+	line treat age_id || line control6 age_id || if cause_id==544, ///
+		legend(off) ///
+		ylab (4 5 6 7 8 9) ///
+		xlab(16 "55-59" 17 "60-64" 18 "65-69" 19 "70-74" 20 "75-79" 21 "80-84" 22 "85-89" 23 "90-95") ///
+		xtitle(" ") ///
+		title("Parkinsons", margin(b=4)) 
+
+	line treat age_id || line control7 age_id || if cause_id==627, ///
+		legend(off) ///
+		ylab (4 5 6 7 8 9) ///
+		xlab(16 "55-59" 17 "60-64" 18 "65-69" 19 "70-74" 20 "75-79" 21 "80-84" 22 "85-89" 23 "90-95") ///
+		xtitle(" ") ///
+		title("Rheumatoid arthritis", margin(b=4)) 
+		
+
+
+
+/************************************************************
+
+					 CALCULATE WALYs
+		  
+************************************************************/
+
+/* -----------------------------------------------------------
+
+	     POPULATE GDB WITH ACTUAL LIFE SATISFACTION
+							
+----------------------------------------------------------- */
+
+	* 1 ALZEIMERS
+	
+		clear
+		use "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVES1-2-3-4-5-6-7.dta", clear
+		
+		* STEP 1: Create patient sample
+		keep if alzeimers==1
+		gen cause_id=543 
+		
+		* STEP 2: Average patient life satisfaction by year, location, age, gender
+		bysort year location_id age_id sex_id: egen patient_ls1=mean(lifesat) 
+		
+		* STEP 3: ID variable
+		gen id = string(year) + " " + string(cause_id) + " " + string(location_id) + " " + string(age_id) + " " + string(sex_id) 
+		
+		* STEP 4: Drop duplicates
+		quietly bysort id:  gen dup = cond(_N==1,0,_n)
+		drop if dup>1
+		
+		* STEP 5: Save as test case
+		keep id patient_ls1
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/testcase.dta", replace
+		
+		* STEP 6: Merge with global burden of disease data
+		clear
+		use "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/Global-Burden-Disease-Data.dta"
+		
+		keep if measure_id==5
+		drop if cause_id==294
+		
+		gen id = string(year) + " " + string(cause_id) + " " + string(location_id) + " " + string(age_id) + " " + string(sex_id)
+		
+		merge 1:1 id using "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/testcase.dta" 
+		drop if _merge==2
+		drop _merge
+		drop id
+		
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/Global-Burden-Disease-Data-WALY.dta", replace
+		
+		
+	* 2 ANXIETY
+	
+		clear
+		use "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVES1-2-3-4-5-6-7.dta", clear
+		
+		* STEP 1: Create patient sample
+		keep if anxiety==1
+		gen cause_id=571
+		
+		* STEP 2: Average patient life satisfaction by year, location, age, gender
+		bysort year location_id age_id sex_id: egen patient_ls2=mean(lifesat) 
+		
+		* STEP 3: ID variable
+		gen id = string(year) + " " + string(cause_id) + " " + string(location_id) + " " + string(age_id) + " " + string(sex_id) 
+		
+		* STEP 4: Drop duplicates
+		quietly bysort id:  gen dup = cond(_N==1,0,_n)
+		drop if dup>1
+		
+		* STEP 5: Save as test case
+		keep id patient_ls2
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/testcase.dta", replace
+		
+		* STEP 6: Merge with global burden of disease data
+		clear
+		use "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/Global-Burden-Disease-Data-WALY.dta" 
+		
+		gen id = string(year) + " " + string(cause_id) + " " + string(location_id) + " " + string(age_id) + " " + string(sex_id)
+		
+		merge 1:1 id using "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/testcase.dta" 
+		drop if _merge==2
+		drop _merge
+		drop id
+
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/Global-Burden-Disease-Data-WALY.dta", replace
+
+	* 3 ASTHMA
+	
+		clear
+		use "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVES1-2-3-4-5-6-7.dta", clear
+		
+		* STEP 1: Create patient sample
+		keep if asthma==1
+		gen cause_id=515
+		
+		* STEP 2: Average patient life satisfaction by year, location, age, gender
+		bysort year location_id age_id sex_id: egen patient_ls3=mean(lifesat) 
+		
+		* STEP 3: ID variable
+		gen id = string(year) + " " + string(cause_id) + " " + string(location_id) + " " + string(age_id) + " " + string(sex_id) 
+		
+		* STEP 4: Drop duplicates
+		quietly bysort id:  gen dup = cond(_N==1,0,_n)
+		drop if dup>1
+		
+		* STEP 5: Save as test case
+		keep id patient_ls3
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/testcase.dta", replace
+		
+		* STEP 6: Merge with global burden of disease data
+		clear
+		use "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/Global-Burden-Disease-Data-WALY.dta" 
+		
+		gen id = string(year) + " " + string(cause_id) + " " + string(location_id) + " " + string(age_id) + " " + string(sex_id)
+		
+		merge 1:1 id using "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/testcase.dta" 
+		drop if _merge==2
+		drop _merge
+		drop id
+		
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/Global-Burden-Disease-Data-WALY.dta", replace
+
+	* 4 CATARACTS
+	
+		clear
+		use "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVES1-2-3-4-5-6-7.dta", clear
+		
+		* STEP 1: Create patient sample
+		keep if cataracts==1
+		gen cause_id=671
+		
+		* STEP 2: Average patient life satisfaction by year, location, age, gender
+		bysort year location_id age_id sex_id: egen patient_ls4=mean(lifesat) 
+		
+		* STEP 3: ID variable
+		gen id = string(year) + " " + string(cause_id) + " " + string(location_id) + " " + string(age_id) + " " + string(sex_id) 
+		
+		* STEP 4: Drop duplicates
+		quietly bysort id:  gen dup = cond(_N==1,0,_n)
+		drop if dup>1
+		
+		* STEP 5: Save as test case
+		keep id patient_ls4
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/testcase.dta", replace
+		
+		* STEP 6: Merge with global burden of disease data
+		clear
+		use "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/Global-Burden-Disease-Data-WALY.dta" 
+		
+		gen id = string(year) + " " + string(cause_id) + " " + string(location_id) + " " + string(age_id) + " " + string(sex_id)
+		
+		merge 1:1 id using "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/testcase.dta" 
+		drop if _merge==2
+		drop _merge
+		drop id
+		
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/Global-Burden-Disease-Data-WALY.dta", replace
+
+	* 5 DEPRESSION
+	
+		clear
+		use "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVES1-2-3-4-5-6-7.dta", clear
+		
+		* STEP 1: Create patient sample
+		keep if depression==1
+		gen cause_id=568
+		
+		* STEP 2: Average patient life satisfaction by year, location, age, gender
+		bysort year location_id age_id sex_id: egen patient_ls5=mean(lifesat) 
+		
+		* STEP 3: ID variable
+		gen id = string(year) + " " + string(cause_id) + " " + string(location_id) + " " + string(age_id) + " " + string(sex_id) 
+		
+		* STEP 4: Drop duplicates
+		quietly bysort id:  gen dup = cond(_N==1,0,_n)
+		drop if dup>1
+		
+		* STEP 5: Save as test case
+		keep id patient_ls5
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/testcase.dta", replace
+		
+		* STEP 6: Merge with global burden of disease data
+		clear
+		use "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/Global-Burden-Disease-Data-WALY.dta" 
+		
+		gen id = string(year) + " " + string(cause_id) + " " + string(location_id) + " " + string(age_id) + " " + string(sex_id)
+		
+		merge 1:1 id using "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/testcase.dta" 
+		drop if _merge==2
+		drop _merge
+		drop id
+		
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/Global-Burden-Disease-Data-WALY.dta", replace
+
+	* 6 OSTEOARTHRITIS
+	
+		clear
+		use "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVES1-2-3-4-5-6-7.dta", clear
+		
+		* STEP 1: Create patient sample
+		keep if osteoarthritis==1
+		gen cause_id=628
+		
+		* STEP 2: Average patient life satisfaction by year, location, age, gender
+		bysort year location_id age_id sex_id: egen patient_ls6=mean(lifesat) 
+		
+		* STEP 3: ID variable
+		gen id = string(year) + " " + string(cause_id) + " " + string(location_id) + " " + string(age_id) + " " + string(sex_id) 
+		
+		* STEP 4: Drop duplicates
+		quietly bysort id:  gen dup = cond(_N==1,0,_n)
+		drop if dup>1
+		
+		* STEP 5: Save as test case
+		keep id patient_ls6
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/testcase.dta", replace
+		
+		* STEP 6: Merge with global burden of disease data
+		clear
+		use "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/Global-Burden-Disease-Data-WALY.dta" 
+		
+		gen id = string(year) + " " + string(cause_id) + " " + string(location_id) + " " + string(age_id) + " " + string(sex_id)
+		
+		merge 1:1 id using "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/testcase.dta" 
+		drop if _merge==2
+		drop _merge
+		drop id
+		
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/Global-Burden-Disease-Data-WALY.dta", replace
+
+	* 7 PARKINSONS
+	
+		clear
+		use "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVES1-2-3-4-5-6-7.dta", clear
+		
+		* STEP 1: Create patient sample
+		keep if parkinsons==1
+		gen cause_id=544
+		
+		* STEP 2: Average patient life satisfaction by year, location, age, gender
+		bysort year location_id age_id sex_id: egen patient_ls7=mean(lifesat) 
+		
+		* STEP 3: ID variable
+		gen id = string(year) + " " + string(cause_id) + " " + string(location_id) + " " + string(age_id) + " " + string(sex_id) 
+		
+		* STEP 4: Drop duplicates
+		quietly bysort id:  gen dup = cond(_N==1,0,_n)
+		drop if dup>1
+		
+		* STEP 5: Save as test case
+		keep id patient_ls7
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/testcase.dta", replace
+		
+		* STEP 6: Merge with global burden of disease data
+		clear
+		use "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/Global-Burden-Disease-Data-WALY.dta" 
+		
+		gen id = string(year) + " " + string(cause_id) + " " + string(location_id) + " " + string(age_id) + " " + string(sex_id)
+		
+		merge 1:1 id using "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/testcase.dta" 
+		drop if _merge==2
+		drop _merge
+		drop id
+		
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/Global-Burden-Disease-Data-WALY.dta", replace
+
+	* 8 RHEUMATOID ARTHRITIS
+	
+		clear
+		use "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVES1-2-3-4-5-6-7.dta", clear
+		
+		* STEP 1: Create patient sample
+		keep if rheumatoid_arthritis==1
+		gen cause_id=627
+		
+		* STEP 2: Average patient life satisfaction by year, location, age, gender
+		bysort year location_id age_id sex_id: egen patient_ls8=mean(lifesat) 
+		
+		* STEP 3: ID variable
+		gen id = string(year) + " " + string(cause_id) + " " + string(location_id) + " " + string(age_id) + " " + string(sex_id) 
+		
+		* STEP 4: Drop duplicates
+		quietly bysort id:  gen dup = cond(_N==1,0,_n)
+		drop if dup>1
+		
+		* STEP 5: Save as test case
+		keep id patient_ls8
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/testcase.dta", replace
+		
+		* STEP 6: Merge with global burden of disease data
+		clear
+		use "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/Global-Burden-Disease-Data-WALY.dta" 
+		
+		gen id = string(year) + " " + string(cause_id) + " " + string(location_id) + " " + string(age_id) + " " + string(sex_id)
+		
+		merge 1:1 id using "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/testcase.dta" 
+		drop if _merge==2
+		drop _merge
+		drop id
+		
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/Global-Burden-Disease-Data-WALY.dta", replace
+
+
+/* -----------------------------------------------------------
+
+      POPULATE GDB WITH THEORETICAL LIFE SATISFACTION 
+			   (DISEASE AND SOCIO CONTROLS)
+							
+----------------------------------------------------------- */
+
+	clear
+	set more off
+	use "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVES1-2-3-4-5-6-7.dta", clear
+
+	* CONTROL VARIABLES
+	
+		global xlist1 i.agecat i.areabldgi gender i.mstat i.nchildren logincome logworth i.isced i.cjs i.country i.year
+		global sick1 alzeimers anxiety asthma cataracts depression osteoarthritis parkinsons rheumatoid_arthritis 
+		
+	* CREATE TREATMENT AND CONTROL GROUPS
+		
+		* 1 ALZEIMERS	
+		reg lifesat alzeimers $xlist1, cluster(mergeid2)
+
+			* STEP 1: Create theoretical treatment group
+			expand 2 if e(sample) & alzeimers==1, gen (alzeimers_treatment)
+			
+			* STEP 2: Make healthy except for treatment variable
+			foreach v of var anxiety asthma cataracts depression osteoarthritis parkinsons rheumatoid_arthritis {
+				replace `v'=0 if alzeimers_treatment==1
+				} *	
+			
+			* STEP 3: Predict life satisfaction for treatment group
+			predict patient_treatment_ls if alzeimers_treatment==1
+			
+			* STEP 4: Create control group by making completely healthy
+			replace alzeimers=0 if alzeimers_treatment==1
+			
+			* STEP 5: Predict life satisfaction for control group
+			predict patient_control_ls if alzeimers_treatment==1
+			
+		* 2 ANXIETY
+		reg lifesat anxiety $xlist1, cluster(mergeid2)
+
+			* STEP 1: Create theoretical treatment group
+			expand 2 if e(sample) & anxiety==1, gen (anxiety_treatment)
+			
+			* STEP 2: Make healthy except for treatment variable
+			foreach v of var alzeimers asthma cataracts depression osteoarthritis parkinsons rheumatoid_arthritis {
+				replace `v'=0 if anxiety_treatment==1
+				} 	
+			
+			* STEP 3: Predict life satisfaction for treatment group
+			predict yhat if anxiety_treatment==1
+			replace patient_treatment_ls=yhat if anxiety_treatment==1
+			drop yhat
+			
+			* STEP 4: Create control group by making completely healthy
+			replace anxiety=0 if anxiety_treatment==1
+			
+			* STEP 5: Predict life satisfaction for control group			
+			predict yhat if anxiety_treatment==1
+			replace patient_control_ls=yhat if anxiety_treatment==1
+			drop yhat
+			
+		* 3 ASTHMA
+		reg lifesat asthma $xlist1, cluster(mergeid2)
+
+			* STEP 1: Create theoretical treatment group
+			expand 2 if e(sample) & asthma==1, gen (asthma_treatment)
+			
+			* STEP 2: Make healthy except for treatment variable
+			foreach v of var alzeimers anxiety cataracts depression osteoarthritis parkinsons rheumatoid_arthritis {
+				replace `v'=0 if asthma_treatment==1
+				} *
+			
+			* STEP 3: Predict life satisfaction for treatment group
+			predict yhat if asthma_treatment==1
+			replace patient_treatment_ls=yhat if asthma_treatment==1
+			drop yhat
+			
+			* STEP 4: Create control group by making completely healthy
+			replace asthma=0 if asthma_treatment==1
+			
+			* STEP 5: Predict life satisfaction for control group						
+			predict yhat if asthma_treatment==1
+			replace patient_control_ls=yhat if asthma_treatment==1
+			drop yhat
+			
+		* 3 CATARACTS
+		reg lifesat cataracts $xlist1, cluster(mergeid2)
+
+			* STEP 1: Create theoretical treatment group
+			expand 2 if e(sample) & cataracts==1, gen (cataracts_treatment)
+			
+			* STEP 2: Make healthy except for treatment variable
+			foreach v of var alzeimers anxiety asthma depression osteoarthritis parkinsons rheumatoid_arthritis {
+				replace `v'=0 if cataracts_treatment==1
+				} *
+			
+			* STEP 3: Predict life satisfaction for treatment group
+			predict yhat if cataracts_treatment==1
+			replace patient_treatment_ls=yhat if cataracts_treatment==1
+			drop yhat
+			
+			* STEP 4: Create control group by making completely healthy
+			replace cataracts=0 if cataracts_treatment==1
+			
+			* STEP 5: Predict life satisfaction for control group									
+			predict yhat if cataracts_treatment==1
+			replace patient_control_ls=yhat if cataracts_treatment==1
+			drop yhat
+			
+		* 4 DEPRESSION
+		reg lifesat depression $xlist1, cluster(mergeid2)
+
+			* STEP 1: Create theoretical treatment group
+			expand 2 if e(sample) & depression==1, gen (depression_treatment)
+			
+			* STEP 2: Make healthy except for treatment variable
+			foreach v of var alzeimers anxiety asthma cataracts osteoarthritis parkinsons rheumatoid_arthritis {
+				replace `v'=0 if depression_treatment==1
+				} *
+			
+			* STEP 3: Predict life satisfaction for treatment group
+			predict yhat if depression_treatment==1
+			replace patient_treatment_ls=yhat if depression_treatment==1
+			drop yhat
+			
+			* STEP 4: Create control group by making completely healthy
+			replace depression=0 if depression_treatment==1
+			
+			* STEP 5: Predict life satisfaction for control group												
+			predict yhat if depression_treatment==1
+			replace patient_control_ls=yhat if depression_treatment==1
+			drop yhat		
+				
+		* 5 OSTEOARTHRITIS
+		reg lifesat osteoarthritis $xlist1, cluster(mergeid2)
+
+			* STEP 1: Create theoretical treatment group
+			expand 2 if e(sample) & osteoarthritis==1, gen (osteoarthritis_treatment)
+			
+			* STEP 2: Make healthy except for treatment variable
+			foreach v of var alzeimers anxiety asthma cataracts depression parkinsons rheumatoid_arthritis {
+				replace `v'=0 if osteoarthritis_treatment==1
+				}  
+			
+			* STEP 3: Predict life satisfaction for treatment group
+			predict yhat if osteoarthritis_treatment==1
+			replace patient_treatment_ls=yhat if osteoarthritis_treatment==1
+			drop yhat
+			
+			* STEP 4: Create control group by making completely healthy
+			replace osteoarthritis=0 if osteoarthritis_treatment==1
+
+			* STEP 5: Predict life satisfaction for control group															
+			predict yhat if osteoarthritis_treatment==1
+			replace patient_control_ls=yhat if osteoarthritis_treatment==1
+			drop yhat		
+								
+		*  6 PARKINSONS
+		reg lifesat parkinsons $xlist1, cluster(mergeid2)
+
+			* STEP 1: Create theoretical treatment group
+			expand 2 if e(sample) & parkinsons==1, gen (parkinsons_treatment)
+			
+			* STEP 2: Make healthy except for treatment variable
+			foreach v of var alzeimers anxiety asthma cataracts depression osteoarthritis rheumatoid_arthritis {
+				replace `v'=0 if parkinsons_treatment==1
+				} *
+			
+			* STEP 3: Predict life satisfaction for treatment group
+			predict yhat if parkinsons_treatment==1
+			replace patient_treatment_ls=yhat if parkinsons_treatment==1
+			drop yhat
+			
+			* STEP 4: Create control group by making completely healthy
+			replace parkinsons=0 if parkinsons_treatment==1
+
+			* STEP 5: Predict life satisfaction for control group																		
+			predict yhat if parkinsons_treatment==1
+			replace patient_control_ls=yhat if parkinsons_treatment==1
+			drop yhat		
+											
+		* 7 RHEUMATOID ARTHRITIS 
+		reg lifesat rheumatoid_arthritis $xlist1, cluster(mergeid2)
+
+			* STEP 1: Create theoretical treatment group
+			expand 2 if e(sample) & rheumatoid_arthritis==1, gen (rheumatoid_arthritis_treatment)
+			
+			* STEP 2: Make healthy except for treatment variable
+			foreach v of var alzeimers anxiety asthma cataracts depression osteoarthritis parkinsons {
+				replace `v'=0 if rheumatoid_arthritis_treatment==1
+				} *
+			
+			* STEP 3: Predict life satisfaction for treatment group
+			predict yhat if rheumatoid_arthritis_treatment==1
+			replace patient_treatment_ls=yhat if rheumatoid_arthritis_treatment==1
+			drop yhat
+			
+			* STEP 4: Create control group by making completely healthy
+			replace rheumatoid_arthritis=0 if rheumatoid_arthritis_treatment==1
+			
+			* STEP 5: Predict life satisfaction for control group																					
+			predict yhat if rheumatoid_arthritis_treatment==1
+			replace patient_control_ls=yhat if rheumatoid_arthritis_treatment==1
+			drop yhat	
+				
+			keep if alzeimers_treatment==1 | anxiety_treatment==1 | asthma_treatment==1 | cataracts_treatment==1 | depression_treatment==1 | osteoarthritis_treatment==1 | parkinsons_treatment==1 | rheumatoid_arthritis_treatment==1 
+	
+	* MERGE WITH GLOBAL BURDEN OF DISEASE DATA
+	
+		* STEP 1: Identify cause ID 
+		gen cause_id=543 if alzeimers_treatment==1
+		replace cause_id=571 if anxiety_treatment==1
+		replace cause_id=515 if asthma_treatment==1
+		replace cause_id=671 if cataracts_treatment==1
+		replace cause_id=568 if depression_treatment==1
+		replace cause_id=628 if osteoarthritis_treatment==1
+		replace cause_id=544 if parkinsons_treatment==1
+		replace cause_id=627 if rheumatoid_arthritis_treatment==1
+
+		* STEP 2: Compute average life satisfaction for treatment group
+		bysort year cause_id location_id age_id sex_id: egen patient_treatment_ls_avg=mean(patient_treatment_ls)
+
+		* STEP 3: Compute average life satisfaction for control group
+		bysort year cause_id location_id age_id sex_id: egen patient_control_ls_avg=mean(patient_control_ls)
+		
+		* STEP 4: Create ID variable
+		gen id = string(year) + " " + string(cause_id) + " " + string(location_id) + " " + string(age_id) + " " + string(sex_id) 
+	
+		* STEP 5: Drop duplicates
+		quietly bysort id:  gen dup = cond(_N==1,0,_n)
+		drop if dup>1
+	
+		* STEP 6: Save as test case
+		keep id patient_treatment_ls_avg patient_control_ls_avg
+		rename patient_treatment_ls_avg patient_treatment_ls
+		rename patient_control_ls_avg patient_control_ls
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/testcase.dta", replace
+	
+		* STEP 7: Merge with global burden of disease data
+		clear
+		use "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/Global-Burden-Disease-Data-WALY.dta" 
+		
+		gen id = string(year) + " " + string(cause_id) + " " + string(location_id) + " " + string(age_id) + " " + string(sex_id) 
+		
+		merge m:1 id using "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/testcase.dta" 
+		drop if _merge==2
+		drop _merge
+		drop id
+		
+		save "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/Global-Burden-Disease-Data-WALY.dta", replace
+	
+	
+/* -----------------------------------------------------------
+
+	  POPULATE GDB WITH AVERAGE HEALTHY LIFE SATISFACTION
+							
+----------------------------------------------------------- */
+
+	clear
+	use "/Users/micahkaats/Desktop/Happiness Research Institute/Elderly/MERGE/WAVES1-2-3-4-5-6-7.dta", clear
+		
+	* STEP 1: Average life satisfaction of healthy people by year, country, age, sex
+	bysort year location_id age_id sex_id: egen average_ls=mean(lifesat) if comorbid==0
+	bysort year location_id age_id sex_id: egen max=max(average_ls)
+	replace average_ls=max
+	drop max
+	
+	* STEP 2: ID variable
+	gen id = string(year) + " " + string(location_id) + " " + string(age_id) + " " + string(sex_id) 
+	
+	* STEP 3: Drop duplicates
+	quietly bysort id:  gen dup = cond(_N==1,0,_n)
+	drop if dup>1
+	
+	* STEP 4: Save as a test case
+	keep id average_ls
+	save "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/testcase.dta", replace
+	
+	* STEP 5: Merge with global burden of disease data
+	clear
+	use "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/Global-Burden-Disease-Data-WALY.dta" 
+	
+	gen id = string(year) + " " + string(location_id) + " " + string(age_id) + " " + string(sex_id)
+	
+	merge m:1 id using "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/testcase.dta" 
+	drop if _merge==2
+	drop _merge
+	drop id
+	
+	save "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/Global-Burden-Disease-Data-WALY.dta", replace
+		
+	
+/* -----------------------------------------------------------
+
+			CLEAN AND ADD BENCHMARKS TO GBD DATA
+							
+----------------------------------------------------------- */	
+
+	clear
+	use "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/Global-Burden-Disease-Data-WALY.dta", replace
+
+	*** MERGE PATIENT VARIABLES ***
+			
+		gen patient_ls=patient_ls1
+		replace patient_ls=patient_ls2 if patient_ls2!=.
+		replace patient_ls=patient_ls3 if patient_ls3!=.
+		replace patient_ls=patient_ls4 if patient_ls4!=.
+		replace patient_ls=patient_ls5 if patient_ls5!=.
+		replace patient_ls=patient_ls6 if patient_ls6!=.
+		replace patient_ls=patient_ls7 if patient_ls7!=.
+		replace patient_ls=patient_ls8 if patient_ls8!=.
+		drop patient_ls1 patient_ls2 patient_ls3 patient_ls4 patient_ls5 patient_ls6 patient_ls7 patient_ls8
+		label var patient_ls "actual, comorbidities double counted"
+
+	*** PATIENT LIFE SATISFACTION EUROPEAN AVERAGES ***	
+		
+		bysort year cause_id age_id sex_id: egen patient_ls_avg=mean(patient_ls)
+		label var patient_ls_avg "euro average"
+	
+	*** IMPUTED PATIENT LIFE SATISFACTION ***
+		
+		gen patient_ls_impute=patient_ls
+		replace patient_ls_impute=patient_ls_avg if patient_ls_impute==.
+		label var patient_ls_impute "imputed (actual and average)"
+		
+	*** PATIENT TREATMENT LIFE SATISFACTION EUROPEAN AVERAGES ***
+		
+		rename patient_treatment_ls patient_treat_ls
+		label var patient_treat_ls "OLS treatment, with comorbidities"
+		bysort year cause_id age_id sex_id: egen patient_treat_ls_avg=mean(patient_treat_ls)
+		label var patient_treat_ls_avg "euro OLS treatment average"
+
+	*** IMPUTED PATIENT TREATMENT LIFE SATISFACTION ***
+	
+		gen patient_treat_ls_impute=patient_treat_ls
+		replace patient_treat_ls_impute=patient_treat_ls_avg if patient_treat_ls_impute==.
+		label var patient_treat_ls_impute "imputed treatment (actual and average)"
+		
+	*** PATIENT CONTROL LIFE SATISFACTION EUROPEAN AVERAGES ***
+		
+		label var patient_control_ls "OLS healthy control"
+		bysort year cause_id age_id sex_id: egen patient_control_ls_avg=mean(patient_control_ls)
+		label var patient_control_ls_avg "euro OLS control average"
+
+	*** IMPUTED PATIENT CONTROL LIFE SATISFACTION ***
+	
+		gen patient_control_ls_impute=patient_control_ls
+		replace patient_control_ls_impute=patient_control_ls_avg if patient_control_ls_impute==.
+		label var patient_control_ls_impute "imputed control (actual and average)"
+		
+	*** HEALTHY AVERAGE LIFE SATISFACTION BENCHMARK ***
+	
+		label var average_ls "healthy average"
+		
+		* Generate European averages 
+		
+		bysort year age_id sex_id: egen average_ls_impute=mean(average_ls)
+		replace average_ls_impute=average_ls if average_ls!=.
+		label var average_ls_impute "euro healthy average by age and gender"
+
+	*** PERFECT HAPPINESS BENCHMARK ***	
+	
+		gen perfect_ls=10
+		label var perfect_ls "perfect life satisfaction"
+	
+	gen id = string(year) + " " + string(cause_id) + " " + string(location_id) + " " + string(age_id) + " " + string(sex_id) 
+	order measure_id measure_name location_id location_name sex_id sex_name age_id age_name cause_id cause_name metric_id metric_name year val upper lower patient_ls patient_ls_avg patient_ls_impute patient_treat_ls patient_treat_ls_avg patient_treat_ls_impute patient_control_ls patient_control_ls_avg patient_control_ls_impute average_ls average_ls_impute perfect_ls	
+	sort cause_name year location_name age_id sex_id	
+
+	save "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/Global-Burden-Disease-Data-WALY.dta", replace
+	
+	
+/* -----------------------------------------------------------
+
+					MERGE WITH DEATH DATA
+							
+----------------------------------------------------------- */		
+
+	clear
+	use "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/Global-Burden-Disease-Data.dta"
+	
+	keep if measure_id==1
+	drop if cause_id==294
+	gen id = string(year) + " " + string(cause_id) + " " + string(location_id) + " " + string(age_id) + " " + string(sex_id) 
+
+	rename val val_death
+	rename upper upper_death
+	rename lower lower_death
+	
+	keep id val_death upper_death lower_death
+
+	merge 1:1 id using "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/Global-Burden-Disease-Data-WALY.dta" 
+	drop _merge
+	
+	replace val_death=0 if val_death==.
+	replace upper_death=0 if upper_death==.
+	replace lower_death=0 if lower_death==.
+	
+	sort year cause_id location_id age_id sex_id
+	order year id measure_id measure_name metric_id metric_name cause_id cause_name location_id location_name age_id age_name sex_id sex_name val upper lower val_death upper_death lower_death
+	
+	save "/Users/micahkaats/Desktop/Happiness Research Institute/LEAPS/Global-Burden-Disease-Data-WALY.dta", replace
+	
+	
